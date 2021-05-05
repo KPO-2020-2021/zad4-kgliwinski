@@ -3,11 +3,13 @@
 // users, this can be left out.
 #ifdef ENABLE_DOCTEST_IN_LIBRARY
 #define DOCTEST_CONFIG_IMPLEMENT
-#include "doctest.h"
+#include "../tests/doctest/doctest.h"
 #endif
 
 #include <iostream>
 #include <stdlib.h>
+#include "../include/menu.hh"
+#include "../include/lacze_do_gnuplota.hh"
 
 #include "exampleConfig.h"
 #include "example.h"
@@ -30,6 +32,16 @@ int main() {
 
   // Bring in the dummy class from the example source,
   // just to show that it is accessible from main.cpp.
+        menu m;
+
+       double args[4][2]= {{100.0, 400.0},{100.0, 300.0},{300.0, 300.0},{300.0, 400.0}};
+       Vector2D a1[4];
+       for (int i=0;i<4;i++){
+              a1[i]=Vector2D(args[i]);
+       }
+       m.init_menu(a1);
+
+
   Dummy d = Dummy();
   return d.doSomething() ? 0 : -1;
 }
