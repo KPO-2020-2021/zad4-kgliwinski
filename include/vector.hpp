@@ -1,6 +1,6 @@
 #pragma once
 
-#include "size.hh"
+#include "size.hpp"
 
 #include <iostream>
 #include <cmath>
@@ -65,8 +65,7 @@ std::ostream &operator << (std::ostream &out, Vector<type,SIZE> const &tmp);
 template <typename type, unsigned int SIZE> 
 std::istream &operator >> (std::istream &in, Vector<type,SIZE> &tmp);
 
-#include "vector.hh"
-#include "matrix.hh"
+#include "matrix.hpp"
 /******************************************************************************
  *  Konstruktor klasy Vector.        
                                         

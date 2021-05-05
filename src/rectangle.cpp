@@ -1,4 +1,4 @@
-#include "rectangle.hh"
+#include "rectangle.hpp"
 /*!
  *  Konstruktor klasy Rectangle.                                              
  *  Argumenty:                                                                

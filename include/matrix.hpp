@@ -1,7 +1,7 @@
 #pragma once
 
-#include "size.hh"
-#include "vector.hh"
+#include "size.hpp"
+#include "vector.hpp"
 #include <iostream>
 #include <cstdlib>
 /*!
@@ -54,7 +54,7 @@ std::istream &operator>>(std::istream &in, Matrix<type,SIZE> &mat);
 template<typename type, unsigned int SIZE>
 std::ostream &operator<<(std::ostream &out, Matrix<type,SIZE> const &mat);
 
-#include "matrix.hh"
+
 
 /******************************************************************************
  *  Konstruktor klasy Matrix.                                                

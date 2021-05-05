@@ -8,8 +8,8 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include "../include/menu.hh"
-#include "../include/lacze_do_gnuplota.hh"
+#include "../include/menu.hpp"
+#include "../include/lacze_do_gnuplota.hpp"
 
 #include "exampleConfig.h"
 #include "example.h"

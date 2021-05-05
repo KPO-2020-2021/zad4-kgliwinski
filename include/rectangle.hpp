@@ -1,9 +1,9 @@
 #pragma once
 constexpr int SIZE = 2;
-#include "vector2D.hh"
-#include "size.hh"
-#include "lacze_do_gnuplota.hh"
-#include "matrix.hh"
+#include "vector2D.hpp"
+#include "size.hpp"
+#include "lacze_do_gnuplota.hpp"
+#include "matrix.hpp"
 #include <fstream>
 #include <iostream>
 #include <iomanip>

@@ -1,4 +1,4 @@
-#include"menu.hh"
+#include"menu.hpp"
 /******************************************************************************
  | Konstruktor bezparametryczny (jedyny) klasy menu                           |
  | Argumenty:                                                                 |
