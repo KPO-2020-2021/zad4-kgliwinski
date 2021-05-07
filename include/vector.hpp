@@ -45,7 +45,9 @@ public:
 
     bool operator == (const Vector &v) const;
 
-    Vector rotate(const type &theta) const;
+    Vector rotate(const type &theta) const; //2D rotation
+
+    Vector rotate(const type &roll, const type &pitch, const type &yaw) const; //3D rotation
 
     type modulus2() const;
 
@@ -282,31 +284,6 @@ std::istream &operator>>(std::istream &in, Vector<type,SIZE> &tmp)
     }
     std::cout << std::endl;
     return in;
-}
-
-/******************************************************************************
- * Obrot wektora o kat theta wokol srodka ukladu wspolrzednych               
- * Argumenty:                                                                
- *      \param[in] theta - kat obrotu ( w stopniach )                                   
- * Zwraca:                                                                   
- *      \param[out] rotated - obrocony wektor                                                      
- */
- template <typename type, unsigned int SIZE> 
-Vector<type,SIZE> Vector<type,SIZE>::rotate(const type &theta) const
-{
-    Vector rotated;
-    type theta_rad = theta * PI / 180;
-    if (SIZE == 2)
-    {
-        type tmp[][SIZE] = {{cos(theta_rad), -sin(theta_rad)}, {sin(theta_rad), cos(theta_rad)}};
-        Matrix<type,SIZE> transformation(tmp);
-        rotated = transformation * *this;
-    }
-    else
-    {
-        std::cerr << "ERROR: Nie zdefiniowano macierzy obrotu dla przestrzeni innej niz dwuwymiarowa." << std::endl;
-    }
-    return rotated;
 }
 
 /******************************************************************************

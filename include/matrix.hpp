@@ -37,15 +37,19 @@ public:
 
     bool operator == (Matrix const &tmp) const;
 
-    double  &operator () (unsigned int row, unsigned int column);
+    type  &operator () (unsigned int row, unsigned int column);
     
-    const double &operator () (unsigned int row, unsigned int column) const;
+    const type &operator () (unsigned int row, unsigned int column) const;
 
     Matrix gauss() const;
 
-    double determinant() const;
+    type determinant() const;
 
     Matrix multiply(Matrix const &mat) const;
+
+    void rotation_matrix(const type & angle);
+
+    void rotation_matrix(const type & x, const type & y, const type & z);
 };
 
 template<typename type, unsigned int SIZE>
@@ -79,7 +83,7 @@ Matrix<type,SIZE>::Matrix() {
 /******************************************************************************
  *  Konstruktor parametryczny klasy Matrix.                                  
  *  Argumenty:                                                               
- *      \param[in] tmp - dwuwymiarowa tablica z elementami typu double.                 
+ *      \param[in] tmp - dwuwymiarowa tablica z elementami typu type.                 
  *  Zwraca:                                                                  
  *      \param[out] Matrix wypelniona wartosciami podanymi w argumencie.                
  */
@@ -132,7 +136,7 @@ Vector<type,SIZE> Matrix<type,SIZE>::operator * (Vector<type,SIZE> tmp) {
  *      \param[out] value Wartosc macierzy w danym miejscu tablicy.                            
  */
 template<typename type, unsigned int SIZE>
-double &Matrix<type,SIZE>::operator()(unsigned int row, unsigned int column) {
+type &Matrix<type,SIZE>::operator()(unsigned int row, unsigned int column) {
 
     if (row >= SIZE) {
         std::cout << "Error: Macierz jest poza zasiegiem"; 
@@ -157,7 +161,7 @@ double &Matrix<type,SIZE>::operator()(unsigned int row, unsigned int column) {
  *      \param[out] Wartosc macierzy w danym miejscu tablicy jako stala.                 
  */
 template<typename type, unsigned int SIZE>
-const double &Matrix<type,SIZE>::operator () (unsigned int row, unsigned int column) const {
+const type &Matrix<type,SIZE>::operator () (unsigned int row, unsigned int column) const {
 
     if (row >= SIZE) {
         std::cout << "Error: Macierz jest poza zasiegiem";
@@ -280,7 +284,7 @@ Matrix<type,SIZE> Matrix<type,SIZE>::gauss() const{
     Matrix mat = *this;
 
     unsigned int  i,j,k;
-    double ratio;
+    type ratio;
     for (i=0;i<SIZE-1;i++){
         if (value[i][i] == 0)
             return 0;
@@ -301,8 +305,8 @@ Matrix<type,SIZE> Matrix<type,SIZE>::gauss() const{
  *      \param[out] det - wyznacznik               
  */
 template<typename type, unsigned int SIZE>
-double Matrix<type,SIZE>::determinant() const{
-    double det;
+type Matrix<type,SIZE>::determinant() const{
+    type det;
     unsigned int  i;
     Matrix tmp = this->gauss();
     det = 1;
