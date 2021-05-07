@@ -14,5 +14,7 @@ typedef Matrix<double, 3> Matrix3D;
 template <>
 inline void Matrix<double, 3>::rotation_matrix(const double & x, const double & y, const double & z)
 {
-
+Matrix tmp;
+double res = x*y*z;
+std::cout<<res;
 }

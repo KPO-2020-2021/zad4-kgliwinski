@@ -285,7 +285,21 @@ std::istream &operator>>(std::istream &in, Vector<type,SIZE> &tmp)
     std::cout << std::endl;
     return in;
 }
-
+/******************************************************************************
+ * Obrot wektora o kat theta wokol srodka ukladu wspolrzednych (zdefiniowano dla
+ *      2D w vector2D.hpp              
+ * Argumenty:                                                                
+ *      \param[in] theta - kat obrotu ( w stopniach )                                   
+ * Zwraca:                                                                   
+ *      \param[out] rotated - zerowy wektor oraz ostrzezenie o bledzie                                                      
+ */
+ template <typename type, unsigned int SIZE> 
+Vector<type,SIZE> Vector<type,SIZE>::rotate(const type &theta) const
+{
+    Vector rotated;
+    std::cerr << "ERROR: Nie zdefiniowano macierzy obrotu dla przestrzeni innej niz dwu lub trojwymiarowa." << std::endl;
+    return rotated;
+}
 /******************************************************************************
  * Zwraca kwadrat modulu wektora                                             
  * Argumenty:                                                                
@@ -319,13 +333,13 @@ type Vector<type,SIZE>::get_len() const
     Vector tmp;
     tmp = *this;
     mod2 = tmp.modulus2();
-    len = pow(mod2, 1.0 / SIZE);
+    len = pow(mod2, 1.0 / 2);
 
     return len;
 }
 
 /******************************************************************************
- * Zwraca kat nachylenia wektora do osi x                                    
+ * Zwraca kat nachylenia wektora do osi x (zdefiniowany dla 2D w vector2D.hpp)                                    
  * Argumenty:                                                                
  *      Brak                                                                 
  * Zwraca:                                                                   
@@ -335,18 +349,10 @@ type Vector<type,SIZE>::get_len() const
 type Vector<type,SIZE>::get_slope_angle() const
 {
     type angle;
-    if (SIZE == 2)
-    {
-        angle = atan2(size[1], size[0]);
-        angle *= 180 / PI;
-    }
-    else
-    {
     std::cerr << 
     "ERROR: Nie zdefiniowano kata nachylenia dla wektorow innych niz dwuwymiarowych."
     << std::endl;
     angle = 0;
-    }
     return angle;
 }
 

@@ -21,3 +21,20 @@ inline Vector<double, 2> Vector<double, 2>::rotate(const double &theta) const
     rotated = transformation * *this;
     return rotated;
 }
+
+/******************************************************************************
+ * Zwraca kat nachylenia wektora do osi x                                    
+ * Argumenty:                                                                
+ *      Brak                                                                 
+ * Zwraca:                                                                   
+ *      \param[in] angle - kat nachylenia wektora do osi x                                                      
+ */
+template <>
+inline double Vector<double,2>::get_slope_angle() const
+{
+    double angle;
+        angle = atan2(size[1], size[0]);
+        angle *= 180 / PI;
+
+    return angle;
+}

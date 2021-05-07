@@ -16,5 +16,8 @@ typedef Vector<double, 3> Vector3D;
  */
 template <>
 inline Vector<double, 3> Vector<double, 3>::rotate(const double &roll, const double &pitch, const double &yaw) const{
-
+Vector tmp;
+double a = roll*pitch*yaw;
+std::cout<<a;
+return tmp;
 }
