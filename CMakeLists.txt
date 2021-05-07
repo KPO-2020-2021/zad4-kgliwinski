@@ -41,6 +41,7 @@ set(SOURCES          # All .cpp files in src/
     src/lacze_do_gnuplota.cpp
     src/menu.cpp
     src/rectangle.cpp
+    src/cuboid.cpp
 )
 set(TESTFILES        # All .cpp files in tests/
     main.cpp
