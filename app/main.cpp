@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include "../include/menu.hpp"
 #include "../include/lacze_do_gnuplota.hpp"
-
+#include "matrix3D.hpp"
 #include "exampleConfig.h"
 
 
@@ -40,7 +40,8 @@ int main() {
               a1[i]=Vector2D(args[i]);
        }
        m.init_menu(a1);
-
+       Matrix3D a;
+       std::cout<<a<<std::endl;
 
 
 }
