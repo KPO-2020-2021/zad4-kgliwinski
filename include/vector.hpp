@@ -17,7 +17,7 @@
 
 
 /*! \class Vector
- *  \brief Opisuje wektor o n-wierszach
+ *  \brief Opisuje wektor o SIZE-wierszach
  */
 
 template <typename type, unsigned int SIZE> 

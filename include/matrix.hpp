@@ -14,7 +14,7 @@
 
 
 /*! \class Matrix
- *  \brief Opisuje macierz nxn
+ *  \brief Opisuje macierz SIZExSIZE
  */
 template<typename type, unsigned int SIZE>
 class Matrix {
