@@ -10,19 +10,13 @@
 [![Lines of Code](https://tokei.rs/b1/github/bsamseth/cpp-project)](https://github.com/Aaronepower/tokei)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/bsamseth/cpp-project.svg)](http://isitmaintained.com/project/bsamseth/cpp-project "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/bsamseth/cpp-project.svg)](http://isitmaintained.com/project/bsamseth/cpp-project "Percentage of issues still open")
+## To run the tests type
+```
+./unit_tests
+```
+in the build directory.
 
-# Boiler plate for C++ projects 
 
-This is a boiler plate for C++ projects. What you get:
-
--   Sources, headers and mains separated in distinct folders
--   Use of modern [CMake](https://cmake.org/) for much easier compiling
--   Setup for tests using [doctest](https://github.com/onqtam/doctest)
--   Continuous testing with [Travis-CI](https://travis-ci.org/), [Appveyor](https://www.appveyor.com) and [GitHub Actions](https://github.com/features/actions), with support for C++17.
--   Code coverage reports, including automatic upload to [Coveralls.io](https://coveralls.io/) and/or [Codecov.io](https://codecov.io)
--   Code documentation with [Doxygen](http://www.stack.nl/~dimitri/doxygen/)
-
-![Demo of usage](https://i.imgur.com/foymVfy.gif)
 
 ## Structure
 ``` text
