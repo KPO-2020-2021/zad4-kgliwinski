@@ -28,9 +28,9 @@ Cuboid(double (&tovec)[2][4][3]);
 
 void get_cub(Vector3D (&tab)[2][4]) const;
 
-Cuboid translation(Vector3D const &tran) const;
+bool operator == (const Cuboid &cub) const;
 
-Cuboid translation() const;
+Cuboid translation(Vector3D const &tran) const;
 
 };
 

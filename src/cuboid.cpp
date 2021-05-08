@@ -29,7 +29,7 @@ Cuboid::Cuboid(Vector3D const (&tab)[2][4]){
 int i;
 for (i=0;i<4;++i){
     tops[0][i] = tab[0][i];
-    tops[0][i] = tab[1][i];
+    tops[1][i] = tab[1][i];
 }
 }
 
@@ -55,14 +55,6 @@ for (i=0;i<4;++i){
 }
 }
 
-void Cuboid::get_cub(Vector3D (&tab)[2][4]) const{
-    int i;
-    for (i=0;i<4;++i){
-        tab[0][i] = tops[0][i];
-        tab[1][i] = tops[1][i];
-    }
-}
-
 
 /*!
  *  \brief Przeciazenie operatora <<                                                 
@@ -84,4 +76,56 @@ std::ostream &operator<<(std::ostream &out, Cuboid const &Cub){
     out << "Wierzcholek H: " << std::endl << vecs[1][3] << std::endl;
 
     return out;
+}
+
+/*!
+ *  \brief Metoda zwracajaca wierzcholki prostopadloscianu do Vector3D                                              
+ *  Argumenty:                                                                
+ *      \param[in] tab - tablica 2x4 typu Vector3D                                                     
+ *  Zwraca:                                                                   
+ *     \post Zwraca osiem wiercholkow przechowywanych w klasie Cuboid i przypisuje je do podanej tablicy                                  
+ */
+void Cuboid::get_cub(Vector3D (&tab)[2][4]) const{
+    int i;
+    for (i=0;i<4;++i){
+        tab[0][i] = tops[0][i];
+        tab[1][i] = tops[1][i];
+    }
+}
+/*!
+ *  \brief Przeciazenie operatora == dla klasy Cuboid                                                
+ *  Argumenty:                                                                
+ *      \param[in] cub - porownywany Cuboid                                             
+ *  Zwraca:
+ *      \retval false - nie sa rowne, 
+ *      \retval true - sa rowne                                                     
+ */
+bool Cuboid::operator==(const Cuboid &cub) const{
+    int i,j;
+    for(i=0;i<2;++i){
+        for(j=0;j<4;++j){
+            if (!(tops[i][j]==cub.tops[i][j]))
+                return 0;
+        }
+    }
+    return 1;
+}
+
+/*!
+ *  \brief Metoda przesuwajaca prostopadloscian o zadany kat w 3D                                            
+ *  Argumenty:                                                                
+ *      \param[in] trans - tablica 2x4 typu Vector3D                                                     
+ *  Zwraca:                                                                   
+ *     \param[out] translated - prostopadloscian po operacji przesuniecia                                
+ */
+Cuboid Cuboid::translation(Vector3D const &tran) const{
+    int i,j;
+    Cuboid translated;
+    
+    for (i=0;i<2;++i){
+        for (j=0;j<4; ++j){
+            translated.tops[i][j] = tops[i][j] + tran; 
+        }
+    }
+    return translated;
 }
