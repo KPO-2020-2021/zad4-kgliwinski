@@ -1,12 +1,12 @@
 #pragma once
 
-#include "size.hpp"
 
+constexpr double PI = 3.14159265;
 #include <iostream>
 #include <cmath>
 #include <iomanip>
 /*!
- * \file  vector.hh
+ * \file  vector.hpp
  *  
  *  Plik zawiera definicję klasy reprezentujacej wektor
  *  o wymiarach SIZEx1
@@ -68,8 +68,8 @@ template <typename type, unsigned int SIZE>
 std::istream &operator >> (std::istream &in, Vector<type,SIZE> &tmp);
 
 #include "matrix.hpp"
-/******************************************************************************
- *  Konstruktor klasy Vector.        
+/*!
+ *  \brief Konstruktor klasy Vector.        
                                         
  *  Argumenty:                                                               
  *      Brak argumentow.                                                     
@@ -85,8 +85,8 @@ Vector<type,SIZE>::Vector()
     }
 }
 
-/******************************************************************************
- *  Konstruktor klasy Vector.                                                
+/*!
+ *  \brief Konstruktor klasy Vector.                                                
  *  Argumenty:                                                               
  *      \param[in] tmp - Jednowymiarowa tablica typu zz.                            
  *  Zwraca:                                                                  
@@ -102,8 +102,8 @@ Vector<type,SIZE>::Vector(type tmp[SIZE])
 }
 
 
-/******************************************************************************
- *  Destruktor klasy Vector.                                                 
+/*!
+ *  \brief Destruktor klasy Vector.                                                 
  *  Argumenty:                                                               
  *      Brak argumentow.                                                     
  *  Zwraca:                                                                  
@@ -113,8 +113,8 @@ Vector<type,SIZE>::Vector(type tmp[SIZE])
 Vector<type,SIZE>::~Vector(){
     //std::cout<<"Deleting vector"<<std::endl;
 }
-/******************************************************************************
- *  Realizuje dodawanie dwoch wektorow.                                      
+/*!
+ *  \brief Realizuje dodawanie dwoch wektorow.                                      
  *  Argumenty:                                                               
  *      \param[in] this - pierwszy skladnik dodawania,                                  
  *      \param[in] v - drugi skladnik dodawania.                                        
@@ -133,8 +133,8 @@ Vector<type,SIZE> Vector<type,SIZE>::operator+(const Vector<type,SIZE> &v) const
     return result;
 }
 
-/******************************************************************************
- *  Realizuje odejmowanie dwoch wektorow.                                    
+/*!
+ *  \brief Realizuje odejmowanie dwoch wektorow.                                    
  *  Argumenty:                                                               
  *      \param[in] this - pierwszy skladnik odejmowania,                                
  *      \param[in] v - drugi skladnik odejmowania.                                      
@@ -153,8 +153,8 @@ Vector<type,SIZE> Vector<type,SIZE>::operator - (const Vector<type,SIZE> &v) con
     return result;
 }
 
-/******************************************************************************
- *  Realizuje mnozenie wektora przez liczbe zmiennoprzecinkowa.              
+/*!
+ *  \brief Realizuje mnozenie wektora przez liczbe zmiennoprzecinkowa.              
  *  Argumenty:                                                               
  *      \param[in] this - pierwszy skladnik mnozenia (wektor),                          
  *      \param[in] v - drugi skladnik mnozenia (liczba typu type).                    
@@ -173,8 +173,8 @@ Vector<type,SIZE> Vector<type,SIZE>::operator*(const type &tmp) const
     return result;
 }
 
-/******************************************************************************
- *  Realizuje dzielenie dwoch wektorow.                                      
+/*!
+ *  \brief Realizuje dzielenie dwoch wektorow.                                      
  *  Argumenty:                                                               
  *      \param[in] this - licznik dzielenia,                                            
  *      \param[in] v - mianownik dzielenia.                                             
@@ -197,8 +197,8 @@ Vector<type,SIZE> Vector<type,SIZE>::operator/(const type &tmp) const
 
     return result;
 }
-/******************************************************************************
- *  Sprawdza czy wektory sa rowne                                      
+/*!
+ *  \brief Sprawdza czy wektory sa rowne                                      
  *  Argumenty:                                                               
  *      \param[in] this - l,                                            
  *      \param[in] v - r.                                             
@@ -216,8 +216,8 @@ bool  Vector<type,SIZE>::operator == (const Vector<type,SIZE> &v) const{
     return 1;
 }
 
-/******************************************************************************
- *  Funktor wektora.                                                         
+/*!
+ *  \brief Funktor wektora.                                                         
  *  Argumenty:                                                               
  *      \param[in] index - index wektora.                                               
  *  Zwraca:                                                                  
@@ -233,8 +233,8 @@ const type &Vector<type,SIZE>::operator[](unsigned int index) const
     return size[index];
 }
 
-/******************************************************************************
- *  Funktor wektora.                                                         
+/*!
+ *  \brief Funktor wektora.                                                         
  *  Argumenty:                                                               
  *      \param[in] index - index wektora.                                               
  *  Zwraca:                                                                  
@@ -246,8 +246,8 @@ type &Vector<type,SIZE>::operator[](unsigned int index)
     return const_cast<type &>(const_cast<const Vector *>(this)->operator[](index));
 }
 
-/******************************************************************************
- *  Przeciazenie operatora <<                                                
+/*!
+ *  \brief Przeciazenie operatora <<                                                
  *  Argumenty:                                                               
  *      \param[in] out - strumien wyjsciowy,                                            
  *      \param[in] tmp - wektor.   
@@ -267,8 +267,8 @@ std::ostream &operator<<(std::ostream &out, Vector<type,SIZE> const &tmp)
     return out;
 }
 
-/******************************************************************************
- *  Przeciazenie operatora >>                                                
+/*!
+ *  \brief Przeciazenie operatora >>                                                
  *  Argumenty:                                                               
  *      \param[in] in - strumien wejsciowy,                                             
  *      \param[in] tmp - wektor.   
@@ -285,8 +285,8 @@ std::istream &operator>>(std::istream &in, Vector<type,SIZE> &tmp)
     std::cout << std::endl;
     return in;
 }
-/******************************************************************************
- * Obrot wektora o kat theta wokol srodka ukladu wspolrzednych (zdefiniowano dla
+/*!
+ * \brief Obrot wektora o kat theta wokol srodka ukladu wspolrzednych (zdefiniowano dla
  *      2D w vector2D.hpp              
  * Argumenty:                                                                
  *      \param[in] theta - kat obrotu ( w stopniach )                                   
@@ -300,8 +300,8 @@ Vector<type,SIZE> Vector<type,SIZE>::rotate(const type &theta) const
     std::cerr << "ERROR: Nie zdefiniowano macierzy obrotu dla przestrzeni innej niz dwu lub trojwymiarowa." << std::endl;
     return rotated;
 }
-/******************************************************************************
- * Zwraca kwadrat modulu wektora                                             
+/*!
+ * \brief Zwraca kwadrat modulu wektora                                             
  * Argumenty:                                                                
  *      Brak                                                                 
  * Zwraca:                                                                   
@@ -319,8 +319,8 @@ type Vector<type,SIZE>::modulus2() const
     }
     return result;
 }
-/******************************************************************************
- * Zwraca dlugosc wektora                                                    
+/*!
+ * \brief Zwraca dlugosc wektora                                                    
  * Argumenty:                                                                
  *      Brak                                                                 
  * Zwraca:                                                                   
@@ -338,8 +338,8 @@ type Vector<type,SIZE>::get_len() const
     return len;
 }
 
-/******************************************************************************
- * Zwraca kat nachylenia wektora do osi x (zdefiniowany dla 2D w vector2D.hpp)                                    
+/*!
+ * \brief Zwraca kat nachylenia wektora do osi x (zdefiniowany dla 2D w vector2D.hpp)                                    
  * Argumenty:                                                                
  *      Brak                                                                 
  * Zwraca:                                                                   

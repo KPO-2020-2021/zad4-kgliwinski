@@ -1,7 +1,6 @@
 #pragma once
 constexpr int SIZE = 2;
 #include "vector2D.hpp"
-#include "size.hpp"
 #include "lacze_do_gnuplota.hpp"
 #include "matrix.hpp"
 #include <fstream>
@@ -9,8 +8,8 @@ constexpr int SIZE = 2;
 #include <iomanip>
 
 
-/*!
- * \file  rectangle.hh
+/*
+ * \file  rectangle.hpp
  *  
  *  Plik zawiera definicję klasy reprezentujacej prostokat
  *  w przestrzeni dwuwymiarowej

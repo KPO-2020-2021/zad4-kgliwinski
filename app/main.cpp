@@ -12,6 +12,7 @@
 #include "../include/lacze_do_gnuplota.hpp"
 #include "matrix3D.hpp"
 #include "exampleConfig.h"
+#include "cuboid.hpp"
 
 
 /*
@@ -34,14 +35,8 @@ int main() {
   // just to show that it is accessible from main.cpp.
         menu m;
 
-       double args[4][2]= {{100.0, 400.0},{100.0, 300.0},{300.0, 300.0},{300.0, 400.0}};
-       Vector2D a1[4];
-       for (int i=0;i<4;i++){
-              a1[i]=Vector2D(args[i]);
-       }
-       m.init_menu(a1);
-       Matrix3D a;
-       std::cout<<a<<std::endl;
+       Cuboid a;
+       std::cout<<a;
 
 
 }

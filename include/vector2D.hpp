@@ -5,8 +5,8 @@
 
 typedef Vector<double, 2> Vector2D;
 
-/******************************************************************************
- * Obrot wektora o kat theta wokol srodka ukladu wspolrzednych               
+/*!
+ * \brief Obrot wektora o kat theta wokol srodka ukladu wspolrzednych               
  * Argumenty:                                                                
  *      \param[in] theta - kat obrotu ( w stopniach )                                   
  * Zwraca:                                                                   
@@ -22,8 +22,8 @@ inline Vector<double, 2> Vector<double, 2>::rotate(const double &theta) const
     return rotated;
 }
 
-/******************************************************************************
- * Zwraca kat nachylenia wektora do osi x                                    
+/*!
+ * \brief Zwraca kat nachylenia wektora do osi x                                    
  * Argumenty:                                                                
  *      Brak                                                                 
  * Zwraca:                                                                   

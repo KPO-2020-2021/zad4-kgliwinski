@@ -4,7 +4,7 @@
 
 typedef Matrix<double, 3> Matrix3D;
 
-/**********************************************************************************
+/*!
  * Utowrzenie macierzy obrotu dla obrotu w 3D - przypisanie jej do danej macierzy             
  * Argumenty:                                                                
  *      \param[in] theta_rad - kat obrotu w stopniach                                 

@@ -1,6 +1,6 @@
 #include "rectangle.hpp"
 /*!
- *  Konstruktor klasy Rectangle.                                              
+ *  \brief Konstruktor klasy Rectangle.                                              
  *  Argumenty:                                                                
  *      Brak argumentow.                                                      
  *  Zwraca:                                                                   
@@ -19,9 +19,9 @@ Rectangle::Rectangle()
     iter[1]=1.0; top[3]=Vector2D(iter);
 }
 /*!
- *  Konstruktor klasy Rectangle.                                              
+ *  \brief Konstruktor klasy Rectangle.                                              
  *  Argumenty:                                                                
- *      \param[in] tab[4] - tlica wektorow reprezentujacych polozenie         
+ *      \param[in] tab[4] - tablica wektorow reprezentujacych polozenie         
  *                       wierzcholkow                                          
  *  Zwraca:                                                                   
  *      \param[out] tab - Cztery wierzcholki prostokata opisane przez podane wektory    
@@ -42,7 +42,7 @@ Rectangle::Rectangle(Vector2D const (&tab)[4])
 }
 
 /*!
- *  Destruktor klasy Rectangle.                                               
+ *  \brief Destruktor klasy Rectangle.                                               
  *  Argumenty:                                                                
  *      Brak argumentow.                                                      
  *  Zwraca:                                                                   
@@ -54,7 +54,7 @@ Rectangle::~Rectangle(){
 
 
 /*!
- *  Funkcja przesuniecia prostokata o wektor                                  
+ *  \brief Funkcja przesuniecia prostokata o wektor                                  
  *  Argumenty:                                                                
  *      \param[in] tran - wektor przesuniecia                                                   
  *  Zwraca:                                                                   
@@ -72,7 +72,7 @@ Rectangle Rectangle::translation(Vector2D const &tran) const
 }
 
 /*!
- *  Funkcja przesuniecia prostokata o wektor                                  
+ *  \brief Funkcja przesuniecia prostokata o wektor                                  
  *  Argumenty:                                                                
  *      brak                                                                  
  *  Zwraca:                                                                   
@@ -108,7 +108,7 @@ void Rectangle::get_rect( Vector2D (&tab)[4]) const
     }
 }
 /*!
- *  Przeciazenie operatora <<                                                 
+ *  \brief Przeciazenie operatora <<                                                 
  *  Argumenty:                                                                
  *      \param[in] out - strumien wejsciowy,                                             
  *      \param[in] Rec - prostokat.                                                      
@@ -127,7 +127,7 @@ std::ostream &operator<<(std::ostream &out, Rectangle const &Rec)
 }
 
 /*!
- * Obrot prostokata o kat theta wokol srodka ukladu wspolrzednych             
+ * \brief Obrot prostokata o kat theta wokol srodka ukladu wspolrzednych             
  * Argumenty:                                                                 
  *      brak                                                                  
  * Zwraca:                                                                    
@@ -147,8 +147,8 @@ Rectangle Rectangle::rotate() const{
     return rotated;
 }
 
-/******************************************************************************
- * Obrot prostokata o kat theta wokol srodka ukladu wspolrzednych            
+/*!
+ * \brief Obrot prostokata o kat theta wokol srodka ukladu wspolrzednych            
  * Argumenty:                                                                 
  *      \param[in] theta - kat obrotu                                         
  * Zwraca:                                                                    
@@ -164,8 +164,8 @@ Rectangle Rectangle::rotate(const double &theta) const{
 
     return rotated;
 }
-/******************************************************************************
- * Sprawdza czy przeciwlegle boki prostokata sa rownej dlugosci               
+/*!
+ * \brief Sprawdza czy przeciwlegle boki prostokata sa rownej dlugosci               
  * Argumenty:                                                                 
  *      \param[in] vecs - tablica 4 wektorow reprezentujaca boki prostokata                                                                  
  * Zwraca:                                                                    
@@ -199,8 +199,8 @@ else std::cout << "Dany prostokat ma wszystkie boki rowne. Dlugosci bokow to:"
 return 1;
 }
 
-/******************************************************************************
- * Sprawdza czy wszystkie katy prostokata sa proste                           
+/*!
+ * \brief Sprawdza czy wszystkie katy prostokata sa proste                           
  * Argumenty:                                                                 
  *      brak                                                                  
  * Zwraca:                                                                    
@@ -223,8 +223,8 @@ bool Rectangle::check_angle_rec(Vector2D const (&vecs)[4]) const{
     return 1;
 }
 
-/******************************************************************************
- * Sprawdza czy wpojedynczy kat jest prosty                                   
+/*!
+ * \brief Sprawdza czy wpojedynczy kat jest prosty                                   
  * Argumenty:                                                                 
  *      \param[in] ang - kat do sprawdzenia                                                                
  * Zwraca:                                                                    
@@ -237,8 +237,8 @@ bool Rectangle::check_angle_straight(double ang) const{
         return 0;
     return 1;
 }
-/******************************************************************************
- * Sprawdza czy przeciwlegle boki prostokata sa oraz czy katy sa proste       
+/*!
+ * \brief Sprawdza czy przeciwlegle boki prostokata sa oraz czy katy sa proste       
  * Argumenty:                                                                 
  *      brak                                                                  
  * Zwraca:                                                                    
@@ -261,8 +261,8 @@ if(!check_angle_rec(sides))
     return 0;
 return 1;
 }
-/******************************************************************************
- * Sprawdza czy przeciwlegle boki prostokata sa oraz czy katy sa proste       
+/*!
+ * \brief Sprawdza czy przeciwlegle boki prostokata sa oraz czy katy sa proste       
  * Argumenty:                                                                 
  *      brak                                                                  
  * Zwraca:                                                                    
@@ -284,8 +284,8 @@ Rectangle Rectangle::rotation_n_times(){
     return tmp;
 }
 
-/******************************************************************************
- * Kieruje wspolrzedne prostokata na strumien wyjsciowy                       
+/*!
+ * \brief Kieruje wspolrzedne prostokata na strumien wyjsciowy                       
  * Argumenty:                                                                 
  *      \param[in] out - strumien wyjsciowy                                                                  
  * Zwraca:                                                                    
@@ -301,7 +301,7 @@ void Rectangle::RectangleToStdout(std::ostream &out)
 }
 
 /*!
- * Przyklad zapisu wspolrzednych zbioru punktow do pliku, z ktorego
+ * \brief Przyklad zapisu wspolrzednych zbioru punktow do pliku, z ktorego
  * dane odczyta program gnuplot i narysuje je w swoim oknie graficznym.
  * \param[in] sNazwaPliku - nazwa pliku, do którego zostana zapisane
  *                          wspolrzędne punktów.
@@ -329,8 +329,8 @@ bool Rectangle::RectangleToFile(const char *sNazwaPliku)
        StrmPlikowy.close();
        return !StrmPlikowy.fail();
 }
-/******************************************************************************
- * Wyswietla prostokat w GNUplocie                                            *
+/*!
+ * \brief Wyswietla prostokat w GNUplocie                                            *
  * Argumenty:                                                                 *
  *      brak                                                                  *
  * Zwraca:                                                                    *
@@ -351,8 +351,8 @@ void Rectangle::PrintRectangle(){
        std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
        std::cin.ignore(100000, '\n');
 }
-/******************************************************************************
- *  Przeciążenie == prostokata                                                         
+/*!
+ *  \brief Przeciążenie == prostokata                                                         
  *  Argumenty:                                                               
  *      \param[in] this - prostokat, ktora porownujemy                   
  *      \param[in] tmp - prostokat, z ktora porownujemy                                                          

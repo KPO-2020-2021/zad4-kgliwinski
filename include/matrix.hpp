@@ -1,11 +1,11 @@
 #pragma once
 
-#include "size.hpp"
+
 #include "vector.hpp"
 #include <iostream>
 #include <cstdlib>
 /*!
- * \file  matrix.hh
+ * \file  matrix.hpp
  *  
  *  Plik zawiera definicję klasy reprezentujacej macierz
  *  o wymiarach SIZExSIZE
@@ -60,8 +60,8 @@ std::ostream &operator<<(std::ostream &out, Matrix<type,SIZE> const &mat);
 
 
 
-/******************************************************************************
- *  Konstruktor klasy Matrix.                                                
+/*!
+ *  \brief Konstruktor klasy Matrix.                                                
  *  Argumenty:                                                               
  *      Brak argumentow.                                                     
  *  Zwraca:                                                                  
@@ -80,8 +80,8 @@ Matrix<type,SIZE>::Matrix() {
 }
 
 
-/******************************************************************************
- *  Konstruktor parametryczny klasy Matrix.                                  
+/*!
+ *  \brief Konstruktor parametryczny klasy Matrix.                                  
  *  Argumenty:                                                               
  *      \param[in] tmp - dwuwymiarowa tablica z elementami typu type.                 
  *  Zwraca:                                                                  
@@ -95,8 +95,8 @@ Matrix<type,SIZE>::Matrix(type tmp[SIZE][SIZE]) {
         }
     }
 }
-/******************************************************************************
- *  Destruktor klasy Matrix.                                                 
+/*!
+ *  \brief Destruktor klasy Matrix.                                                 
  *  Argumenty:                                                               
  *      Brak argumentow.                                                     
  *  Zwraca:                                                                  
@@ -107,8 +107,8 @@ Matrix<type,SIZE>::~Matrix(){
     //std::cout<<"Deleting matrix"<<std::endl;
 }
 
-/******************************************************************************
- *  Realizuje mnozenie macierzy przez wektor.                                
+/*!
+ *  \brief Realizuje mnozenie macierzy przez wektor.                                
  *  Argumenty:                                                               
  *      \param[in] this - macierz, czyli pierwszy skladnik mnozenia,                    
  *      \param[in] tmp - wektor, czyli drugi skladnik mnozenia.                           
@@ -127,8 +127,8 @@ Vector<type,SIZE> Matrix<type,SIZE>::operator * (Vector<type,SIZE> tmp) {
 }
 
 
-/******************************************************************************
- *  Funktor macierzy                                                         
+/*!
+ *  \brief Funktor macierzy                                                         
  *  Argumenty:                                                               
  *      \param[in] row - numer wiersza.                                                 
  *      \param[in] column - numer kolumny.                                              
@@ -152,8 +152,8 @@ type &Matrix<type,SIZE>::operator()(unsigned int row, unsigned int column) {
 }
 
 
-/******************************************************************************
- *  Funktor macierzy                                                         
+/*!
+ *  \brief Funktor macierzy                                                         
  *  Argumenty:                                                               
  *      \param[in] row - numer wiersza.                                                 
  *      \param[in] column - numer kolumny.                                              
@@ -176,8 +176,8 @@ const type &Matrix<type,SIZE>::operator () (unsigned int row, unsigned int colum
     return value[row][column];
 }
 
-/******************************************************************************
- *  Przeciążenie dodawania macierzy                                                         
+/*!
+ *  \brief Przeciążenie dodawania macierzy                                                         
  *  Argumenty:                                                               
  *      \param[in] this - macierz, czyli pierwszy skladnik dodawania,                    
  *      \param[in] v - wektor, czyli drugi skladnik dodawania.                                              
@@ -195,8 +195,8 @@ Matrix<type,SIZE> Matrix<type,SIZE>::operator + (Matrix<type,SIZE> tmp) {
     return result;
 }
 
-/******************************************************************************
- *  Przeciążenie odejmowania macierzy                                                         
+/*!
+ *  \brief Przeciążenie odejmowania macierzy                                                         
  *  Argumenty:                                                               
  *      \param[in] this - macierz, czyli pierwszy skladnik dodawania,                    
  *      \param[in] v - wektor, czyli drugi skladnik dodawania.                                              
@@ -214,8 +214,8 @@ Matrix<type,SIZE> Matrix<type,SIZE>::operator - (Matrix<type,SIZE> tmp) {
     return result;
 }
 
-/******************************************************************************
- *  Przeciazenie operatora >>                                                
+/*!
+ *  \brief Przeciazenie operatora >>                                                
  *  Argumenty:                                                               
  *      \param[in] in - strumien wejsciowy,                                             
  *      \param[in] mat - macierz. 
@@ -233,8 +233,8 @@ std::istream &operator>>(std::istream &in, Matrix<type,SIZE> &mat) {
 }
 
 
-/******************************************************************************
- *  Przeciazenie operatora <<                                                
+/*!
+ *  \brief Przeciazenie operatora <<                                                
  *  Argumenty:                                                               
  *      \param[in] out - strumien wyjsciowy,                                            
  *      \param[in] mat - macierz.     
@@ -252,8 +252,8 @@ std::ostream &operator<<(std::ostream &out, const Matrix<type,SIZE> &mat) {
     }
     return out;
 }
-/******************************************************************************
- *  Przeciążenie == macierzy                                                         
+/*!
+ *  \brief Przeciążenie == macierzy                                                         
  *  Argumenty:                                                               
  *      \param[in] this - macierz, ktora porownujemy                   
  *      \param[in] tmp - macierz, z ktora porownujemy                                                          
@@ -272,8 +272,8 @@ bool Matrix<type,SIZE>::operator == (Matrix<type,SIZE> const &tmp) const{
     }
     return 1;
 }
-/******************************************************************************
- *  Zwraca macierz schodkowa utworzona przez eliminacje gaussa                                                        
+/*!
+ *  \brief Zwraca macierz schodkowa utworzona przez eliminacje gaussa                                                        
  *  Argumenty:                                                               
  *      \param[in] this - macierz dla ktorej chcemy przeprowadzic operacje                                                           
  *  Zwraca:                                                                  
@@ -297,8 +297,8 @@ Matrix<type,SIZE> Matrix<type,SIZE>::gauss() const{
     }
     return mat;
 }
-/******************************************************************************
- *  Zwraca wyznacznik macierzy                                                       
+/*!
+ *  \brief Zwraca wyznacznik macierzy                                                       
  *  Argumenty:                                                               
  *      \param[in] this - macierz, ktorej wyznacznik liczymy                                                             
  *  Zwraca:                                                                  
@@ -316,8 +316,8 @@ type Matrix<type,SIZE>::determinant() const{
     return det;
 }
 
-/******************************************************************************
- *  Zwraca wynik mnozenia dwoch macierzy                                                      
+/*!
+ *  \brief Zwraca wynik mnozenia dwoch macierzy                                                      
  *  Argumenty:                                                               
  *      \param[in] this - macierz 1 (L)
  *      \param mat - macierz 2 (P)                                                             

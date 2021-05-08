@@ -5,9 +5,9 @@
 
 
 /*!
- * \file  mmenu.hh
+ * \file  mmenu.hpp
  *  
- *  Plik zawiera definicję klasy reprezentujacej menu
+ *  \brief Plik zawiera definicję klasy reprezentujacej menu
  *  programu rysujacego figury 2D
  */
 
