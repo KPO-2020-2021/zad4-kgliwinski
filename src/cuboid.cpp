@@ -10,7 +10,7 @@
  */
 Cuboid::Cuboid(){
 int i;
-double iter[4][3] = {{0,0,0},{1,0,0},{0,1,0},{1,1,0}};
+double iter[4][3] = {{0,0,0},{1,0,0},{1,1,0},{0,1,0}};
 for (i=0;i<4;++i){
     tops[0][i] = Vector3D(iter[i]);
     iter[i][2] = 1;
@@ -21,15 +21,37 @@ for (i=0;i<4;++i){
 /*!
  *  \brief Konstruktor parametryczny klasy Cuboid.                                              
  *  Argumenty:                                                                
- *      \param[in] tab - tablica 4x2 typu Vector3D                                                      
+ *      \param[in] tab - tablica 2x4 typu Vector3D                                                      
  *  Zwraca:                                                                   
  *     \post Zwraca osiem wiercholkow zadanych przez program                                  
  */
 Cuboid::Cuboid(Vector3D const (&tab)[2][4]){
 int i;
 for (i=0;i<4;++i){
-    tops[i][0] = tab[i][0];
-    tops[i][1] = tab[i][1];
+    tops[0][i] = tab[0][i];
+    tops[0][i] = tab[1][i];
+}
+}
+
+/*!
+ *  \brief Konstruktor parametryczny klasy Cuboid.                                              
+ *  Argumenty:                                                                
+ *      \param[in] tab - tablica 2x4x3 typu double                                                     
+ *  Zwraca:                                                                   
+ *     \post Zwraca osiem wiercholkow zadanych przez program                                  
+ */
+Cuboid::Cuboid(double (&tovec)[2][4][3]){
+int i,j;
+Vector3D tab[2][4];
+for(i=0;i<4;++i){
+    for(j=0;j<3;++j){
+        tab[0][i] = Vector3D(tovec[0][i]);
+        tab[1][i] = Vector3D(tovec[1][i]);
+    }
+}
+for (i=0;i<4;++i){
+    tops[0][i] = tab[0][i];
+    tops[1][i] = tab[1][i];
 }
 }
 

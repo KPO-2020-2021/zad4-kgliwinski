@@ -49,6 +49,9 @@ set(TESTFILES        # All .cpp files in tests/
     matrix2D_tests.cpp
     rectangle_tests.cpp
     vector3D_tests.cpp
+    matrix3D_tests.cpp
+    cuboid_tests.cpp
+
 )
 set(LIBRARY_NAME engine)  # Default name for the library built from src/*.cpp (change if you wish)
 
