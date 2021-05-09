@@ -1,10 +1,9 @@
 #pragma once
-
-
-constexpr double PI = 3.14159265;
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+
+constexpr double PI = 3.14159265;
 /*!
  * \file  vector.hpp
  *  
@@ -47,8 +46,6 @@ public:
 
     Vector rotate(const type &theta) const; //2D rotation
 
-    Vector rotate(const type &roll, const type &pitch, const type &yaw) const; //3D rotation
-
     type modulus2() const;
 
     type get_len() const;
@@ -67,7 +64,7 @@ std::ostream &operator << (std::ostream &out, Vector<type,SIZE> const &tmp);
 template <typename type, unsigned int SIZE> 
 std::istream &operator >> (std::istream &in, Vector<type,SIZE> &tmp);
 
-#include "matrix.hpp"
+
 /*!
  *  \brief Konstruktor klasy Vector.        
                                         

@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "vector.hpp"
 #include <iostream>
 #include <cstdlib>
@@ -49,7 +47,9 @@ public:
 
     void rotation_matrix(const type & angle);
 
-    void rotation_matrix(const type & x, const type & y, const type & z);
+    Matrix rotation_matrix(const type & angle, const char &axis) const;
+
+    Vector<type,SIZE> apply_matrix_to_rotation(const Vector<type,SIZE> &rotation) const; //3D rotation
 };
 
 template<typename type, unsigned int SIZE>

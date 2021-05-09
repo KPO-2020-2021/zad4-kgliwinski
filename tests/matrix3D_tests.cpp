@@ -161,7 +161,7 @@ TEST_CASE("M 4.04: operator ()"){
     CHECK (res == a(1,1));
 }
 
-TEST_CASE("Mod 1.01: Matrix3D::gauss()"){
+TEST_CASE("M 5.01: Matrix3D::gauss()"){
     double tab[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
     double tab2[3][3] = {{1,2,3},{0,-3,-6},{0.6,0,-0.6}};
     Matrix3D a(tab);
@@ -170,7 +170,7 @@ TEST_CASE("Mod 1.01: Matrix3D::gauss()"){
     CHECK ((a.gauss()) == b);
 }
 
-TEST_CASE("Mod 1.02: Matrix3D::gauss() 2"){
+TEST_CASE("M 5.02: Matrix3D::gauss() 2"){
     double tab[3][3] = {{3,2},{3,4}};
     double tab2[3][3] = {{3,2},{0,2}};
     Matrix3D a(tab);
@@ -179,7 +179,7 @@ TEST_CASE("Mod 1.02: Matrix3D::gauss() 2"){
     CHECK ((a.gauss()) == b);
 }
 
-TEST_CASE("Mod 1.03: Matrix3D::determinant() 1"){
+TEST_CASE("M 5.03: Matrix3D::determinant() 1"){
     double tab[3][3] = {{1,2},{3,4}};
     Matrix3D a(tab);
     double det; 
@@ -187,7 +187,7 @@ TEST_CASE("Mod 1.03: Matrix3D::determinant() 1"){
     CHECK ((a.determinant()) == det);
 }
 
-TEST_CASE("Mod 1.03: Matrix3D::determinant() 2"){
+TEST_CASE("M 5.04: Matrix3D::determinant() 2"){
     double tab[3][3] = {{3,2},{3,4}};
     Matrix3D a(tab);
     double det; 
@@ -195,16 +195,16 @@ TEST_CASE("Mod 1.03: Matrix3D::determinant() 2"){
     CHECK ((a.determinant()) == det);
 }
 
-TEST_CASE("Mod 2.01: Matrix3D::multiply() 1"){
-    double tab[3][3] = {{3,2},{3,4}};
+TEST_CASE("M 6.01: Matrix3D::multiply() 1"){
+    double tab[3][3] = {{3,2,1},{3,4,1},{1,1,1}};
     Matrix3D a(tab);  //macierz jednostkowa
     Matrix3D b;
-    double tab_res[3][3] = {{3,2},{3,4}};
+    double tab_res[3][3] = {{3,2,1},{3,4,1},{1,1,1}};
     Matrix3D res(tab_res);
     CHECK (a*b == res);
 }
 
-TEST_CASE("Mod 2.02: Matrix3D::multiply() 2"){
+TEST_CASE("M 6.02: Matrix3D::multiply() 2"){
     double tab[3][3] = {{1,2},{3,4}};
     Matrix3D a(tab);  //macierz jednostkowa
     Matrix3D b(tab);
@@ -213,12 +213,16 @@ TEST_CASE("Mod 2.02: Matrix3D::multiply() 2"){
     CHECK (a*b == res);
 }
 
-TEST_CASE("Mod 2.03: Matrix3D::multiply() 3"){
-    double tab[3][3] = {{-1,0},{12,4}};
-    double tab2[3][3] = {{12,7},{1,5}};
+TEST_CASE("M 6.03: Matrix3D::multiply() 3"){
+    double tab[3][3] = {{4,2,4},{4,21,4},{6,9,8}};
+    double tab2[3][3] = {{1,3,2},{4,2,1},{4,3,2}};
     Matrix3D a(tab);  //macierz jednostkowa
     Matrix3D b(tab2);
-    double tab_res[3][3] = {{-12,-7},{148,104}};
+    double tab_res[3][3] = {{28,28,18},{104,66,37},{74,60,37}};
     Matrix3D res(tab_res);
     CHECK (a*b == res);
+}
+
+TEST_CASE("M 7.01: 3D rotation x"){
+    
 }
