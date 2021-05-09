@@ -201,7 +201,7 @@ TEST_CASE("Mod 2.01: Matrix2D::multiply() 1"){
     Matrix2D b;
     double tab_res[2][2] = {{3,2},{3,4}};
     Matrix2D res(tab_res);
-    CHECK (a.multiply(b) == res);
+    CHECK (a*b == res);
 }
 
 TEST_CASE("Mod 2.02: Matrix2D::multiply() 2"){
@@ -210,7 +210,7 @@ TEST_CASE("Mod 2.02: Matrix2D::multiply() 2"){
     Matrix2D b(tab);
     double tab_res[2][2] = {{7,10},{15,22}};
     Matrix2D res(tab_res);
-    CHECK (a.multiply(b) == res);
+    CHECK (a*b == res);
 }
 
 TEST_CASE("Mod 2.03: Matrix2D::multiply() 3"){
@@ -220,5 +220,5 @@ TEST_CASE("Mod 2.03: Matrix2D::multiply() 3"){
     Matrix2D b(tab2);
     double tab_res[2][2] = {{-12,-7},{148,104}};
     Matrix2D res(tab_res);
-    CHECK (a.multiply(b) == res);
+    CHECK (a*b == res);
 }

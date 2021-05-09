@@ -45,7 +45,7 @@ public:
 
     type determinant() const;
 
-    Matrix multiply(Matrix const &mat) const;
+    Matrix operator*(Matrix const &mat) const;
 
     void rotation_matrix(const type & angle);
 
@@ -325,7 +325,7 @@ type Matrix<type,SIZE>::determinant() const{
  *      \param[out] res - wynik mnozenia macierzy               
  */
 template<typename type, unsigned int SIZE>
-Matrix<type,SIZE> Matrix<type,SIZE>::multiply(Matrix<type,SIZE> const &mat) const{
+Matrix<type,SIZE> Matrix<type,SIZE>::operator*(Matrix<type,SIZE> const &mat) const{
     unsigned int  i,j,k;
     Matrix res;
     for (i=0; i<SIZE; i++){

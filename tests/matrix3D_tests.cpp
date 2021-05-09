@@ -201,7 +201,7 @@ TEST_CASE("Mod 2.01: Matrix3D::multiply() 1"){
     Matrix3D b;
     double tab_res[3][3] = {{3,2},{3,4}};
     Matrix3D res(tab_res);
-    CHECK (a.multiply(b) == res);
+    CHECK (a*b == res);
 }
 
 TEST_CASE("Mod 2.02: Matrix3D::multiply() 2"){
@@ -210,7 +210,7 @@ TEST_CASE("Mod 2.02: Matrix3D::multiply() 2"){
     Matrix3D b(tab);
     double tab_res[3][3] = {{7,10},{15,22}};
     Matrix3D res(tab_res);
-    CHECK (a.multiply(b) == res);
+    CHECK (a*b == res);
 }
 
 TEST_CASE("Mod 2.03: Matrix3D::multiply() 3"){
@@ -220,5 +220,5 @@ TEST_CASE("Mod 2.03: Matrix3D::multiply() 3"){
     Matrix3D b(tab2);
     double tab_res[3][3] = {{-12,-7},{148,104}};
     Matrix3D res(tab_res);
-    CHECK (a.multiply(b) == res);
+    CHECK (a*b == res);
 }
