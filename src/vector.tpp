@@ -159,5 +159,15 @@ type Vector<type,SIZE>::get_len() const
 
     return len;
 }
+template <typename type, unsigned int SIZE> 
+type Vector<type,SIZE>::scalar_prod(Vector<type,SIZE> const & vec) const{
+    type res;
+    unsigned int i;
+    res = 0;
+    for (i=0;i<SIZE;++i){
+        res+= size[i]*vec.size[i];
+    }
+    return res;
+}
 
 

@@ -214,3 +214,13 @@ TEST_CASE("C 3.02: Cuboid::translation(Vector3D) negative"){
     Cuboid b(tab2);
     CHECK(c == b);
 }
+
+TEST_CASE("C 3.01: Cuboid::rotation(Matrix3D) 1"){
+    Cuboid a;
+    double tab[3] = {-1,-2,-3};
+    Vector3D tran(tab);
+    Cuboid c = a.translation(tran);
+    double tab2[2][4][3] = {{{-1,-2,-3},{0,-2,-3},{0,-1,-3},{-1,-1,-3}},{{-1,-2,-2},{0,-2,-2},{0,-1,-2},{-1,-1,-2}}};
+    Cuboid b(tab2);
+    CHECK(c == b);
+}

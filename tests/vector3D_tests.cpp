@@ -412,3 +412,69 @@ TEST_CASE("V 10.03: operator const []"){
     double b = a[1];
     CHECK (abs(res - b)<= 0.000001);
 }
+
+TEST_CASE("V 11.01: scalar_prod()"){
+    double tab[3] = {3,1,7};
+    double tab2[3] = {3,1,2};
+    double res;
+    Vector3D a(tab);
+    Vector3D b(tab2);
+    res = 24;
+
+    CHECK (abs(res - a.scalar_prod(b))<= 0.000001);
+}
+
+TEST_CASE("V 11.01: scalar_prod() 1"){
+    double tab[3] = {3,1,7};
+    double tab2[3] = {3,1,2};
+    double res;
+    Vector3D a(tab);
+    Vector3D b(tab2);
+    res = 24;
+
+    CHECK (abs(res - a.scalar_prod(b))<= 0.000001);
+}
+
+TEST_CASE("V 11.02: scalar_prod() 2"){
+    double tab[3] = {3,1,-7};
+    double tab2[3] = {3,1,2};
+    double res;
+    Vector3D a(tab);
+    Vector3D b(tab2);
+    res = -4;
+
+    CHECK (abs(res - a.scalar_prod(b))<= 0.000001);
+}
+
+TEST_CASE("V 11.03: scalar_prod() 3"){
+    double tab[3] = {0,0,0};
+    double tab2[3] = {0,0,0};
+    double res;
+    Vector3D a(tab);
+    Vector3D b(tab2);
+    res = 0;
+
+    CHECK (abs(res - a.scalar_prod(b))<= 0.000001);
+}
+
+TEST_CASE("V 11.04: scalar_prod() 4"){
+    double tab[3] = {-3,1,-7};
+    double tab2[3] = {3,1,2};
+    double res;
+    Vector3D a(tab);
+    Vector3D b(tab2);
+    res = -22;
+
+    CHECK (abs(res - a.scalar_prod(b))<= 0.000001);
+}
+
+TEST_CASE("V 11.05: scalar_prod() 5"){
+    double tab[3] = {-3,-1,-7};
+    double tab2[3] = {-3,-1,-2};
+    double res;
+    Vector3D a(tab);
+    Vector3D b(tab2);
+    res = 24;
+
+    CHECK (abs(res - a.scalar_prod(b))<= 0.000001);
+}

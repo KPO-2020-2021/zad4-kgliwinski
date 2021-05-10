@@ -138,7 +138,7 @@ public:
  *  Argumenty:                                                               
  *      \param[in] index - index wektora.                                               
  *  Zwraca:                                                                  
- *      \param[in] size - Wartosc wektora w danym miejscu tablicy jako stala.                  
+ *      \param[out] size - Wartosc wektora w danym miejscu tablicy jako stala.                  
  */
     const type &operator [] (unsigned int index) const;
 
@@ -147,10 +147,18 @@ public:
  *  Argumenty:                                                               
  *      \param[in] index - index wektora.                                               
  *  Zwraca:                                                                  
- *      \param[in] Vector - Wartosc wektora w danym miejscu tablicy.                             
+ *      \param[out] Vector - Wartosc wektora w danym miejscu tablicy.                             
  */
     type &operator [] (unsigned int index);
 
+/*!
+ *  \brief Iloczyn skalarny wektorow                                                        
+ *  Argumenty:                                                               
+ *      \param[in] vec - drugi wektor do porownania                                              
+ *  Zwraca:                                                                  
+ *      \param[out] res - wynik iloczynu skalarnego                           
+ */
+    type scalar_prod(Vector const & vec) const;
 };
 
 /*!
