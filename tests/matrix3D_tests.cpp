@@ -224,5 +224,74 @@ TEST_CASE("M 6.03: Matrix3D::multiply() 3"){
 }
 
 TEST_CASE("M 7.01: 3D rotation x"){
+    Matrix3D a;
+    a = a.rotation_matrix(90,'x');
+    double tab[3][3] = {{1,0,0},{0,0,-1},{0,1,0}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
+}
 
+TEST_CASE("M 7.02: 3D rotation x 2"){
+    Matrix3D a;
+    a = a.rotation_matrix(180,'x');
+    double tab[3][3] = {{1,0,0},{0,-1,0},{0,0,-1}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
+}
+
+TEST_CASE("M 7.03: 3D rotation x 3"){
+    Matrix3D a;
+    a = a.rotation_matrix(450,'x');
+    double tab[3][3] = {{1,0,0},{0,0,-1},{0,1,0}};
+    Matrix3D b(tab);    
+    std::cout << a;
+    CHECK (a == b);
+}
+
+TEST_CASE("M 7.04: 3D rotation y"){
+    Matrix3D a;
+    a = a.rotation_matrix(0,'y');
+    double tab[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
+}
+
+TEST_CASE("M 7.05: 3D rotation y 2"){
+    Matrix3D a;
+    a = a.rotation_matrix(135,'y');
+    double tab[3][3] = {{-sqrt(2)/2,0,sqrt(2)/2},{0,1,0},{-sqrt(2)/2,0,-sqrt(2)/2}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
+}
+
+TEST_CASE("M 7.06: 3D rotation y 3"){
+    Matrix3D a;
+    a = a.rotation_matrix(60,'y');
+    double tab[3][3] = {{1/2,0,sqrt(3)/2},{0,1,0},{-sqrt(3)/2,0,1/2}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
+}
+
+TEST_CASE("M 7.07: 3D rotation z"){
+    Matrix3D a;
+    a = a.rotation_matrix(360,'z');
+    double tab[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
+}
+
+TEST_CASE("M 7.08: 3D rotation z 2"){
+    Matrix3D a;
+    a = a.rotation_matrix(360000000,'z');
+    double tab[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
+}
+
+TEST_CASE("M 7.09: 3D rotation z 2"){
+    Matrix3D a;
+    a = a.rotation_matrix(-360000000,'z');
+    double tab[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
 }
