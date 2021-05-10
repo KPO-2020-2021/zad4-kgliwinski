@@ -28,43 +28,6 @@ private:
 
 public:
 
-    Vector();
-
-    Vector(type [SIZE]);
-
-    ~Vector();
-
-    Vector operator + (const Vector &v) const;
-
-    Vector operator - (const Vector &v) const;
-
-    Vector operator * (const type &tmp) const;
-
-    Vector operator / (const type &tmp) const;
-
-    bool operator == (const Vector &v) const;
-
-    Vector rotate(const type &theta) const; //2D rotation
-
-    type modulus2() const;
-
-    type get_len() const;
-
-    type get_slope_angle() const;
-
-    const type &operator [] (unsigned int index) const;
-
-    type &operator [] (unsigned int index);
-
-};
-
-template <typename type, unsigned int SIZE> 
-std::ostream &operator << (std::ostream &out, Vector<type,SIZE> const &tmp);
-
-template <typename type, unsigned int SIZE> 
-std::istream &operator >> (std::istream &in, Vector<type,SIZE> &tmp);
-
-
 /*!
  *  \brief Konstruktor klasy Vector.        
                                         
@@ -73,14 +36,7 @@ std::istream &operator >> (std::istream &in, Vector<type,SIZE> &tmp);
  *  Zwraca:                                                                  
  *      \param[out] this -  Wektory wypelniony wartoscia 0.                                      
  */
-template <typename type, unsigned int SIZE> 
-Vector<type,SIZE>::Vector()
-{
-    for (unsigned int i = 0; i < SIZE; ++i)
-    {
-        size[i] = 0.0;
-    }
-}
+    Vector();
 
 /*!
  *  \brief Konstruktor klasy Vector.                                                
@@ -89,15 +45,7 @@ Vector<type,SIZE>::Vector()
  *  Zwraca:                                                                  
  *      \param[in] this - Tablice wypelniona wartosciami podanymi w argumencie.                
  */
-template <typename type, unsigned int SIZE> 
-Vector<type,SIZE>::Vector(type tmp[SIZE])
-{
-    for (unsigned int i = 0; i < SIZE; ++i)
-    {
-        size[i] = tmp[i];
-    }
-}
-
+    Vector(type [SIZE]);
 
 /*!
  *  \brief Destruktor klasy Vector.                                                 
@@ -106,10 +54,8 @@ Vector<type,SIZE>::Vector(type tmp[SIZE])
  *  Zwraca:                                                                  
  *      \post Usuwa wektor                                                         
  */
- template <typename type, unsigned int SIZE> 
-Vector<type,SIZE>::~Vector(){
-    //std::cout<<"Deleting vector"<<std::endl;
-}
+    ~Vector();
+
 /*!
  *  \brief Realizuje dodawanie dwoch wektorow.                                      
  *  Argumenty:                                                               
@@ -119,16 +65,7 @@ Vector<type,SIZE>::~Vector(){
  *      \param[out] result - Sume dwoch skladnikow przekazanych jako wskaznik                     
  *      na parametr.                                                         
  */
- template <typename type, unsigned int SIZE> 
-Vector<type,SIZE> Vector<type,SIZE>::operator+(const Vector<type,SIZE> &v) const
-{
-    Vector result;
-    for (unsigned int i = 0; i < SIZE; ++i)
-    {
-        result[i] = size[i] + v[i];
-    }
-    return result;
-}
+    Vector operator + (const Vector &v) const;
 
 /*!
  *  \brief Realizuje odejmowanie dwoch wektorow.                                    
@@ -139,16 +76,7 @@ Vector<type,SIZE> Vector<type,SIZE>::operator+(const Vector<type,SIZE> &v) const
  *      \param[in] result - Roznice dwoch skladnikow przekazanych jako wskaznik                  
  *      na parametr.                                                         
  */
- template <typename type, unsigned int SIZE> 
-Vector<type,SIZE> Vector<type,SIZE>::operator - (const Vector<type,SIZE> &v) const
-{
-    Vector result;
-    for (unsigned int i = 0; i < SIZE; ++i)
-    {
-        result[i] = size[i] - v[i];
-    }
-    return result;
-}
+    Vector operator - (const Vector &v) const;
 
 /*!
  *  \brief Realizuje mnozenie wektora przez liczbe zmiennoprzecinkowa.              
@@ -159,16 +87,7 @@ Vector<type,SIZE> Vector<type,SIZE>::operator - (const Vector<type,SIZE> &v) con
  *      \param[in] result - Iloczyn dwoch skladnikow przekazanych jako wskaznik                  
  *      na parametr.                                                         
  */
- template <typename type, unsigned int SIZE> 
-Vector<type,SIZE> Vector<type,SIZE>::operator*(const type &tmp) const
-{
-    Vector result;
-    for (unsigned int i = 0; i < SIZE; ++i)
-    {
-        result[i] = size[i] * tmp;
-    }
-    return result;
-}
+    Vector operator * (const type &tmp) const;
 
 /*!
  *  \brief Realizuje dzielenie dwoch wektorow.                                      
@@ -179,21 +98,8 @@ Vector<type,SIZE> Vector<type,SIZE>::operator*(const type &tmp) const
  *      \param[in] result - Iloraz dwoch skladnikow przekazanych jako wskaznik                   
  *      na parametr.                                                         
  */
- template <typename type, unsigned int SIZE> 
-Vector<type,SIZE> Vector<type,SIZE>::operator/(const type &tmp) const
-{
-    Vector result;
-    if (tmp==0){
-        std::cerr << "ERROR: Nie mozna dzielic przez 0" << std::endl;
-        return *this;
-    }
-    for (unsigned int i = 0; i < SIZE; ++i)
-    {
-        result[i] = size[i] / tmp;
-    }
+    Vector operator / (const type &tmp) const;
 
-    return result;
-}
 /*!
  *  \brief Sprawdza czy wektory sa rowne                                      
  *  Argumenty:                                                               
@@ -203,15 +109,29 @@ Vector<type,SIZE> Vector<type,SIZE>::operator/(const type &tmp) const
  *     \retval true - sa rowne
  *     \retval false - nie sa rowne                                                        
  */
- template <typename type, unsigned int SIZE> 
-bool  Vector<type,SIZE>::operator == (const Vector<type,SIZE> &v) const{
-    unsigned int i;
-    for (i=0;i<SIZE;i++){
-        if (!((abs(size[i] - v.size[i]) <= 0.000001)))
-            return 0;
-    }
-    return 1;
-}
+    bool operator == (const Vector &v) const;
+
+    Vector rotate(const type &theta) const; //2D rotation
+
+/*!
+ * \brief Zwraca kwadrat modulu wektora                                             
+ * Argumenty:                                                                
+ *      Brak                                                                 
+ * Zwraca:                                                                   
+ *      \param[out] result - kwadrat modulu wektora                                               
+ */
+    type modulus2() const;
+
+/*!
+ * \brief Zwraca dlugosc wektora                                                    
+ * Argumenty:                                                                
+ *      Brak                                                                 
+ * Zwraca:                                                                   
+ *      \param[out] len - dlugosc wektora                                                      
+ */
+    type get_len() const;
+
+    type get_slope_angle() const;   //2D rotation
 
 /*!
  *  \brief Funktor wektora.                                                         
@@ -220,15 +140,7 @@ bool  Vector<type,SIZE>::operator == (const Vector<type,SIZE> &v) const{
  *  Zwraca:                                                                  
  *      \param[in] size - Wartosc wektora w danym miejscu tablicy jako stala.                  
  */
- template <typename type, unsigned int SIZE> 
-const type &Vector<type,SIZE>::operator[](unsigned int index) const
-{
-    if (index < 0 || index >= SIZE)
-    {
-        std::cerr << "Error: Wektor jest poza zasiegiem!" << std::endl;
-    }
-    return size[index];
-}
+    const type &operator [] (unsigned int index) const;
 
 /*!
  *  \brief Funktor wektora.                                                         
@@ -237,11 +149,9 @@ const type &Vector<type,SIZE>::operator[](unsigned int index) const
  *  Zwraca:                                                                  
  *      \param[in] Vector - Wartosc wektora w danym miejscu tablicy.                             
  */
- template <typename type, unsigned int SIZE> 
-type &Vector<type,SIZE>::operator[](unsigned int index)
-{
-    return const_cast<type &>(const_cast<const Vector *>(this)->operator[](index));
-}
+    type &operator [] (unsigned int index);
+
+};
 
 /*!
  *  \brief Przeciazenie operatora <<                                                
@@ -251,18 +161,8 @@ type &Vector<type,SIZE>::operator[](unsigned int index)
  *  Zwraca:
  *      \param[out] out - strumien wyjsciowy                                                     
  */
- template <typename type, unsigned int SIZE> 
-std::ostream &operator<<(std::ostream &out, Vector<type,SIZE> const &tmp)
-{
-    out.precision(10);
-    for (unsigned int i = 0; i < SIZE; ++i)
-    {
-        out << "[ " ;
-        out << std::setw(10) << std::fixed << std::setprecision(10) << tmp[i];
-        out << " ]\n";
-    }
-    return out;
-}
+template <typename type, unsigned int SIZE> 
+std::ostream &operator << (std::ostream &out, Vector<type,SIZE> const &tmp);
 
 /*!
  *  \brief Przeciazenie operatora >>                                                
@@ -272,85 +172,8 @@ std::ostream &operator<<(std::ostream &out, Vector<type,SIZE> const &tmp)
  *  Zwraca:
  *      \param[out] in - strumien wejsciowy                                                     
  */
- template <typename type, unsigned int SIZE> 
-std::istream &operator>>(std::istream &in, Vector<type,SIZE> &tmp)
-{
-    for (unsigned int i = 0; i < SIZE; ++i)
-    {
-        in >> tmp[i];
-    }
-    std::cout << std::endl;
-    return in;
-}
-/*!
- * \brief Obrot wektora o kat theta wokol srodka ukladu wspolrzednych (zdefiniowano dla
- *      2D w vector2D.hpp              
- * Argumenty:                                                                
- *      \param[in] theta - kat obrotu ( w stopniach )                                   
- * Zwraca:                                                                   
- *      \param[out] rotated - zerowy wektor oraz ostrzezenie o bledzie                                                      
- */
- template <typename type, unsigned int SIZE> 
-Vector<type,SIZE> Vector<type,SIZE>::rotate(const type &theta) const
-{
-    Vector rotated;
-    std::cerr << "ERROR: Nie zdefiniowano macierzy obrotu dla przestrzeni innej niz dwu lub trojwymiarowa." << std::endl;
-    return rotated;
-}
-/*!
- * \brief Zwraca kwadrat modulu wektora                                             
- * Argumenty:                                                                
- *      Brak                                                                 
- * Zwraca:                                                                   
- *      \param[out] result - kwadrat modulu wektora                                               
- */
- template <typename type, unsigned int SIZE> 
-type Vector<type,SIZE>::modulus2() const
-{
-    unsigned int i;
-    type result=0;
-
-    for (i = 0; i < SIZE; i++)
-    {
-        result += pow(size[i], 2);
-    }
-    return result;
-}
-/*!
- * \brief Zwraca dlugosc wektora                                                    
- * Argumenty:                                                                
- *      Brak                                                                 
- * Zwraca:                                                                   
- *      \param[out] len - dlugosc wektora                                                      
- */
- template <typename type, unsigned int SIZE> 
-type Vector<type,SIZE>::get_len() const
-{
-    type len, mod2;
-    Vector tmp;
-    tmp = *this;
-    mod2 = tmp.modulus2();
-    len = pow(mod2, 1.0 / 2);
-
-    return len;
-}
-
-/*!
- * \brief Zwraca kat nachylenia wektora do osi x (zdefiniowany dla 2D w vector2D.hpp)                                    
- * Argumenty:                                                                
- *      Brak                                                                 
- * Zwraca:                                                                   
- *      \param[in] angle - kat nachylenia wektora do osi x                                                      
- */
- template <typename type, unsigned int SIZE> 
-type Vector<type,SIZE>::get_slope_angle() const
-{
-    type angle;
-    std::cerr << 
-    "ERROR: Nie zdefiniowano kata nachylenia dla wektorow innych niz dwuwymiarowych."
-    << std::endl;
-    angle = 0;
-    return angle;
-}
+template <typename type, unsigned int SIZE> 
+std::istream &operator >> (std::istream &in, Vector<type,SIZE> &tmp);
 
 
+#include"../src/vector.tpp"

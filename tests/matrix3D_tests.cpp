@@ -224,5 +224,5 @@ TEST_CASE("M 6.03: Matrix3D::multiply() 3"){
 }
 
 TEST_CASE("M 7.01: 3D rotation x"){
-    
+
 }
