@@ -244,7 +244,6 @@ TEST_CASE("M 7.03: 3D rotation x 3"){
     a = a.rotation_matrix(450,'x');
     double tab[3][3] = {{1,0,0},{0,0,-1},{0,1,0}};
     Matrix3D b(tab);    
-    std::cout << a;
     CHECK (a == b);
 }
 
@@ -288,10 +287,154 @@ TEST_CASE("M 7.08: 3D rotation z 2"){
     CHECK (a == b);
 }
 
-TEST_CASE("M 7.09: 3D rotation z 2"){
+TEST_CASE("M 7.09: 3D rotation z 3"){
     Matrix3D a;
     a = a.rotation_matrix(-360000000,'z');
     double tab[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
     Matrix3D b(tab);    
     CHECK (a == b);
+}
+
+TEST_CASE("M 7.10: 3D rotation multiple axis"){
+    Matrix3D a;
+    a = a.rotation_matrix(90,'z');
+    a = a * a.rotation_matrix(90,'y');
+    a = a * a.rotation_matrix(90,'x');
+    double tab[3][3] = {{0,0,1},{0,1,0},{-1,0,0}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
+}
+
+TEST_CASE("M 7.11: 3D rotation multiple axis"){
+    Matrix3D a;
+    a = a.rotation_matrix(0,'z');
+    a = a * a.rotation_matrix(0,'y');
+    a = a * a.rotation_matrix(0,'x');
+    double tab[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
+    Matrix3D b(tab);    
+    CHECK (a == b);
+}
+
+TEST_CASE("M 8.01: Matrix3D::apply_matrix_to_rotation() 1"){
+    Matrix3D a;
+    a = a.rotation_matrix(90,'z');
+    double tab[3] = {1,1,1};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {-1,1,1}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
+}
+
+TEST_CASE("M 8.02: Matrix3D::apply_matrix_to_rotation() 2"){
+    Matrix3D a;
+    a = a.rotation_matrix(30,'y');
+    double tab[3] = {1,1,1};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {1.366025404,1,0.366025404}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
+}
+
+TEST_CASE("M 8.03: Matrix3D::apply_matrix_to_rotation() 3"){
+    Matrix3D a;
+    a = a.rotation_matrix(135,'x');
+    double tab[3] = {1,1,1};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {1,-1.414213562,0}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
+}
+
+TEST_CASE("M 8.04: Matrix3D::apply_matrix_to_rotation() multiple 1"){
+    Matrix3D a;
+    a = a.rotation_matrix(90,'x');
+    a = a * a.rotation_matrix(90,'y');
+    a = a * a.rotation_matrix(90,'z');
+    double tab[3] = {1,1,1};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {1,-1,1}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
+}
+
+TEST_CASE("M 8.05: Matrix3D::apply_matrix_to_rotation() multiple 2"){
+    Matrix3D a;
+    a = a.rotation_matrix(135,'z');
+    a = a * a.rotation_matrix(135,'y');
+    a = a * a.rotation_matrix(135,'x');
+    double tab[3] = {1,1,1};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {1.5,-0.5,-0.7071067812}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
+}
+
+TEST_CASE("M 8.06: Matrix3D::apply_matrix_to_rotation() multiple 3"){
+    Matrix3D a;
+    a = a.rotation_matrix(270,'z');
+    a = a * a.rotation_matrix(180,'y');
+    a = a * a.rotation_matrix(135,'x');
+    double tab[3] = {1,1,1};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {-1.414213562,1,0}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
+}
+
+TEST_CASE("M 8.07: Matrix3D::apply_matrix_to_rotation() multiple 4"){
+    Matrix3D a;
+    a = a.rotation_matrix(270,'z');
+    a = a * a.rotation_matrix(180,'y');
+    a = a * a.rotation_matrix(135,'x');
+    double tab[3] = {2,1,3};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {-2.828427125,2,1.414213562}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
+}
+
+TEST_CASE("M 8.08: Matrix3D::apply_matrix_to_rotation() multiple 5"){
+    Matrix3D a;
+    a = a.rotation_matrix(270,'x');
+    a = a * a.rotation_matrix(180,'y');
+    a = a * a.rotation_matrix(135,'z');
+    double tab[3] = {2,1,3};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {2.121320344,-3,-0.707106781}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
+}
+
+TEST_CASE("M 8.09: Matrix3D::apply_matrix_to_rotation() multiple 6"){
+    Matrix3D a;
+    a = a.rotation_matrix(270,'x');
+    a = a * a.rotation_matrix(180,'x');
+    a = a * a.rotation_matrix(135,'x');
+    double tab[3] = {2,1,3};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {2,1.414213562,-2.828427125}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
+}
+
+TEST_CASE("M 8.10: Matrix3D::apply_matrix_to_rotation() multiple 6"){
+    Matrix3D a;
+    a = a.rotation_matrix(270,'y');
+    a = a * a.rotation_matrix(180,'y');
+    a = a * a.rotation_matrix(135,'y');
+    double tab[3] = {6,1,13};
+    Vector3D vec(tab);
+    vec = a.apply_matrix_to_rotation(vec);
+    double tab_res[3] = {-13.43502884,1,-4.949747468}; 
+    Vector3D res(tab_res);
+    CHECK (vec == res);
 }
