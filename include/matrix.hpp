@@ -18,7 +18,10 @@ template<typename type, unsigned int SIZE>
 class Matrix {
 
 private:
-    type value[SIZE][SIZE];               // Wartosci macierzy
+/*!
+ * \brief Tablica wartosci macierzy
+ */
+    type value[SIZE][SIZE];               
 
 public:
 

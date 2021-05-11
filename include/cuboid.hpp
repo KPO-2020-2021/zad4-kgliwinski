@@ -15,7 +15,10 @@
  */
 class Cuboid{
 private:
-
+/*!
+ * \brief Tablica wektorow reprezentujacych wierzchlki dwoch rownoleglych
+ * podstaw prostopadloscianu
+ */
 Vector3D tops[2][4];
 
 public:
@@ -44,7 +47,7 @@ Cuboid(Vector3D const (&tab)[2][4]);
 /*!
  *  \brief Konstruktor parametryczny klasy Cuboid.                                              
  *  Argumenty:                                                                
- *      \param[in] tab - tablica 2x4x3 typu double                                                     
+ *      \param[in] tovec - tablica 2x4x3 typu double                                                     
  *  Zwraca:                                                                   
  *     \post Zwraca osiem wiercholkow zadanych przez program                                  
  */
@@ -125,6 +128,15 @@ bool check_vec_perp() const;
 void get_cub(Vector3D (&tab)[2][4]) const;
 
 /*!
+ *  \brief Metoda zwracajaca wierzcholki prostopadloscianu do tablicy                                             
+ *  Argumenty:                                                                
+ *      \param[in] tab - tablica 2x4x3 typu double                                                   
+ *  Zwraca:                                                                   
+ *     \post Zwraca osiem wiercholkow przechowywanych w klasie Cuboid i przypisuje je do podanej tablicy                                  
+ */
+void get_cub(double (&tab)[2][4][3]) const;
+
+/*!
  *  \brief Przeciazenie operatora == dla klasy Cuboid                                                
  *  Argumenty:                                                                
  *      \param[in] cub - porownywany Cuboid                                             
@@ -152,6 +164,20 @@ Cuboid translation(Vector3D const &tran) const;
  */
 Cuboid rotation(Matrix3D const &mat) const;
 
+/*!
+ *  \brief Metoda wypisania odpowiednich wierzcholkow do pliku                                                
+ *  Argumenty:                                                                
+ *      \param[in] out - strumien wyjsciowy,                                                                                                
+ */
+void print_cuboid(std::ostream &out) const;
+
+/*!
+ *  \brief Metoda wypisania odpowiednich wierzcholkow do pliku
+ *         zgodnie z (dziwnym) sposobem jaki zaproponowano w zadaniu                              
+ *  Argumenty:                                                                
+ *      \param[in] out - strumien wyjsciowy,                                                                                                
+ */
+void print_cuboid_weird(std::ostream &out) const;
 };
 
 /*!

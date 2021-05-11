@@ -23,8 +23,10 @@ template <typename type, unsigned int SIZE>
 class Vector {
 
 private:
-
-    type size[SIZE];     //Tablica wektora
+/*!
+ * \brief Tablica wektora
+ */
+    type size[SIZE];     
 
 public:
 

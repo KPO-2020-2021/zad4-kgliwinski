@@ -16,6 +16,8 @@
 ```
 in the build directory.
 
+For the sake of the project, rectangle tests have been disabled, since rectangle class is not a part of the task.
+
 
 
 ## Structure

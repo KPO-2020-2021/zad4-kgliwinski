@@ -18,7 +18,9 @@
 class menu{
 
     private:
-
+/*!
+ * \brief Zmienna mowiaca czy menu jest aktywne
+ */
     bool open;
 
     public:

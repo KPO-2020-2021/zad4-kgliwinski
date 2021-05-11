@@ -152,6 +152,19 @@ void Cuboid::get_cub(Vector3D (&tab)[2][4]) const
     }
 }
 
+void Cuboid::get_cub(double (&tab)[2][4][3]) const
+{
+    int i, j;
+    for (i = 0; i < 4; ++i)
+    {
+        for (j = 0; j < 3; ++j)
+        {
+            tab[0][i][j] = tops[0][i][j];
+            tab[1][i][j] = tops[1][i][j];
+        }
+    }
+}
+
 bool Cuboid::operator==(const Cuboid &cub) const
 {
     int i, j;
@@ -193,4 +206,30 @@ Cuboid Cuboid::rotation(Matrix3D const &mat) const
         }
     }
     return rotated;
+}
+
+void Cuboid::print_cuboid(std::ostream &out) const
+{
+    int i,j,k;
+    out.precision(10);
+    double vecs[2][4][3];
+    this->get_cub(vecs);
+    for (i=0;i<2;++i){
+        for (j=0;j<4;++j){
+            for (k=0;k<3; ++k){
+                out << std::setw(10) << std::fixed << std::setprecision(10) << vecs[i][j][k] << " ";
+            }
+            if(j==1 || j==3)
+                    out<<std::endl;
+            out<<std::endl;
+        }
+    }
+    for (i=0;i<1;++i){
+        for (j=0;j<2;++j){
+            for (k=0;k<3; ++k){
+                out << std::setw(10) << std::fixed << std::setprecision(10) << vecs[i][j][k] << " ";
+            }
+            out<<std::endl;
+        }
+    }
 }

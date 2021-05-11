@@ -268,6 +268,31 @@ TEST_CASE("C 2.03: Cuboid::get_cub() negative")
     }
 }
 
+TEST_CASE("C 2.05: Cuboid::get_cub() double")
+{
+    int i, j, z;
+    double tab_vec[2][4][3];
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 4; j++)
+        {
+            for (z=0;z<3;z++)
+            tab_vec[i][j][z] = z+1;
+        }
+    }
+    Cuboid a(tab_vec);
+    double tab2[2][4][3];
+    a.get_cub(tab2);
+    for (i = 0; i < 2; ++i)
+    {
+        for (j = 0; j < 4; ++j)
+        {
+            for(z=0;z<3;++z)
+            CHECK(tab_vec[i][j][z] == tab2[i][j][z]);
+        }
+    }
+}
+
 TEST_CASE("C 3.01: Cuboid::translation(Vector3D)")
 {
     Cuboid a;
@@ -468,4 +493,36 @@ TEST_CASE("C 6.07: Cuboid::check_cub 7 small neg"){
     }
     Cuboid a(tops);
     CHECK(a.check_cub());
+}
+
+TEST_CASE("C 7.02: Cuboid::print_cub 2 "){
+    int i;
+    Vector3D tops[2][4];
+    double iter[4][3] = {{0, 0, 0}, {2, 0, 0}, {2, 2, 0}, {0, 2, 0}};
+    for (i = 0; i < 4; ++i)
+    {
+        tops[0][i] = Vector3D(iter[i]);
+        iter[i][2] = 2;
+        tops[1][i] = Vector3D(iter[i]);
+    }
+    Cuboid a(tops);
+  std::ostringstream out;
+  std::ostringstream out2;
+  a.print_cuboid(out);
+out2<<"0.0000000000 0.0000000000 0.0000000000 \n";
+out2<<"2.0000000000 0.0000000000 0.0000000000 \n\n";
+
+out2<<"2.0000000000 2.0000000000 0.0000000000 \n";
+out2<<"0.0000000000 2.0000000000 0.0000000000 \n\n";
+
+out2<<"0.0000000000 0.0000000000 2.0000000000 \n";
+out2<<"2.0000000000 0.0000000000 2.0000000000 \n\n";
+
+out2<<"2.0000000000 2.0000000000 2.0000000000 \n";
+out2<<"0.0000000000 2.0000000000 2.0000000000 \n\n";
+
+out2<<"0.0000000000 0.0000000000 0.0000000000 \n";
+out2<<"2.0000000000 0.0000000000 0.0000000000 \n";
+
+  CHECK (out.str() == out2.str());
 }

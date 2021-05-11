@@ -42,6 +42,7 @@ set(SOURCES          # All .cpp files in src/
     src/menu.cpp
     src/rectangle.cpp
     src/cuboid.cpp
+    src/menu_cub.cpp
 )
 set(TESTFILES        # All .cpp files in tests/
     main.cpp
