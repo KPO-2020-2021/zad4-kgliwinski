@@ -21,7 +21,10 @@ Vector3D tops[2][4];
 public:
 
 /*!
- *  \brief Konstruktor bezparametryczny klasy Cuboid.                                              
+ *  \brief Konstruktor bezparametryczny klasy Cuboid.
+ *          Powstaly prostopadloscian ma dwa prostokaty "tworzace":
+ *          p1 = [0][0] = (0,0,0), [0][1] =  (1,0,0), [0][2] = (1,1,0), [0][3] = (0,1,0)      
+ *          p2 = [1][0] = (0,0,1), [1][1] =  (1,0,1), [1][2] = (1,1,1), [1][3] = (0,1,1)                                            
  *  Argumenty:                                                                
  *      Brak argumentow.                                                      
  *  Zwraca:                                                                   
@@ -54,27 +57,52 @@ Cuboid(double (&tovec)[2][4][3]);
  *     \retval true - jest zgodny
  *     \retval false - nie jest zgodny                                   
  */
-bool check_cub();
+bool check_cub() const;
+
+/*!
+ *  \brief Zwraca do tablicy 3x2 wektory reprezentujace
+ *              przeciwne boki prostopadloscianu                                           
+ *  Argumenty:  
+ *      \param[in] vecs - tablica 3x2 typu Vector3D do ktorej
+ *                        program zwraca boki                                                                                                                
+ *  Zwraca:                                                                   
+ *     brak                                 
+ */
+void get_vec_opp(Vector3D (&vecs)[3][2]) const;
 
 /*!
  *  \brief Sprawdza czy wektory tworzace przeciwne boki prostopadloscianu
  *          sa rowne                                          
- *  Argumenty:                                                                                                                    
+ *  Argumenty:
+ *       brak                                                                                                       
  *  Zwraca:                                                                   
  *     \retval true - sa rowne
  *     \retval false - nie sa rowne                                  
  */
-bool check_vec_opp();
+bool check_vec_opp() const;
+
+/*!
+ *  \brief Zwraca do tablicy 2x3 wektory reprezentujace
+ *          boki przy wierzcholkach [0][1] (do vecs[0])
+ *          i [1][3] (do vecs[1]) prostopadloscianu                                         
+ *  Argumenty:  
+ *      \param[in] vecs - tablica 2x3 typu Vector3D do ktorej
+ *                        program zwraca boki                                                                                                                
+ *  Zwraca:                                                                   
+ *     brak                                 
+ */
+void get_vec_perp(Vector3D (&vecs)[2][3]) const;
 
 /*!
  *  \brief Sprawdza czy wektory tworzace niektore konkretne boki prostokata
             (glownie te przy wierzcholkach) sa prostopadle                                   
- *  Argumenty:                                                                                                                    
+ *  Argumenty:        
+ *         brak                                                                                                            
  *  Zwraca:                                                                   
  *     \retval true - sa prostopadle
  *     \retval false - nie sa prostopadle                                 
  */
-bool check_vec_perpendicular();
+bool check_vec_perp() const;
 
 /*!
  *  \brief Metoda zwracajaca wierzcholki prostopadloscianu do Vector3D                                              

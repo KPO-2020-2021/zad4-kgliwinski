@@ -41,18 +41,51 @@ Cuboid::Cuboid(double (&tovec)[2][4][3])
     }
 }
 
-bool Cuboid::check_cub(){
-    if (!check_vec_opp() && !check_vec_perpendicular())
+bool Cuboid::check_cub() const
+{
+    if (!(check_vec_opp() && check_vec_perp()))
         return 0;
     return 1;
 }
 
-bool Cuboid::check_vec_opp(){
+void Cuboid::get_vec_opp(Vector3D (&vecs)[3][2]) const
+{
+    vecs[0][0] = tops[0][1] - tops[0][0];
+    vecs[0][1] = tops[1][2] - tops[1][3];
 
+    vecs[1][0] = tops[1][1] - tops[0][1];
+    vecs[1][1] = tops[1][3] - tops[0][3];
+
+    vecs[2][0] = tops[0][3] - tops[0][0];
+    vecs[2][1] = tops[1][2] - tops[1][1];
+}
+
+bool Cuboid::check_vec_opp() const
+{
+    int i;
+    Vector3D opp[3][2];
+    this->get_vec_opp(opp);
+    for (i = 0; i < 3; ++i)
+    {
+        if (!(opp[i][0] == opp[i][1]))
+            return 0;
+    }
     return 1;
 }
 
-bool Cuboid::check_vec_perpendicular(){
+void Cuboid::get_vec_perp(Vector3D (&vecs)[2][3]) const
+{
+    vecs[0][0] = tops[0][2] - tops[0][1];
+    vecs[0][1] = tops[1][1] - tops[0][1];
+    vecs[0][2] = tops[0][0] - tops[0][1];
+
+    vecs[1][0] = tops[1][3] - tops[1][0];
+    vecs[1][1] = tops[1][3] - tops[0][3];
+    vecs[1][2] = tops[1][3] - tops[1][2];
+}
+
+bool Cuboid::check_vec_perp() const
+{
 
     return 1;
 }
@@ -123,10 +156,12 @@ Cuboid Cuboid::translation(Vector3D const &tran) const
 
 Cuboid Cuboid::rotation(Matrix3D const &mat) const
 {
-    int i,j;
+    int i, j;
     Cuboid rotated;
-    for (i=0;i<2; ++i){
-        for (j=0;j<4; ++j){
+    for (i = 0; i < 2; ++i)
+    {
+        for (j = 0; j < 4; ++j)
+        {
             rotated.tops[i][j] = mat.apply_matrix_to_rotation(tops[i][j]);
         }
     }
