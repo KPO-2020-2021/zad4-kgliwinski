@@ -319,6 +319,7 @@ TEST_CASE("C 5.01: Cuboid:get_vec_opp i check_vec_opp")
         CHECK(opp[i][1] == vec[i]);
     }
     CHECK(a.check_vec_opp());
+    CHECK(a.check_cub());
 }
 
 TEST_CASE("C 5.02: Cuboid:get_vec_opp i check_vec_opp 2")
@@ -347,6 +348,7 @@ TEST_CASE("C 5.02: Cuboid:get_vec_opp i check_vec_opp 2")
         CHECK(opp[i][1] == vec[i]);
     }
     CHECK(a.check_vec_opp());
+    CHECK(a.check_cub());
 }
 
 TEST_CASE("C 5.03: Cuboid:get_vec_opp i check_vec_opp 3")
@@ -375,41 +377,17 @@ TEST_CASE("C 5.03: Cuboid:get_vec_opp i check_vec_opp 3")
         CHECK(opp[i][1] == vec[i]);
     }
     CHECK(a.check_vec_opp());
+    CHECK(a.check_cub());
 }
 
-TEST_CASE("C 6.01: Cuboid:get_vec_par i check_vec_par 1")
-{
-    int i,j;
-    Vector3D tops[2][4];
-    /*double iter[4][3] = {{-2, -2, 0}, {0, -2, 0}, {0, 0, 0}, {-2, 0, 0}};
-    for (i = 0; i < 4; ++i)
-    {
-        tops[0][i] = Vector3D(iter[i]);
-        iter[i][2] = 2;
-        tops[1][i] = Vector3D(iter[i]);
-    }
-    Cuboid a(tops);*/
+
+TEST_CASE("C 6.01: Cuboid::check_cub 1"){
     Cuboid a;
-    double tab[3][3] = {{0,1,0},{0,0,1},{-1,0,0}};
-    Vector3D par[2][3];
-    for (i=0;i<3;++i){
-        par[0][i] = Vector3D(tab[i]);
-        par[1][i] = Vector3D(tab[i]);
-    }
-
-    Vector3D res[2][3];
-    a.get_vec_perp(res);
-    for (i=0;i<2;++i){
-        for (j=0;j<3;++j){
-            CHECK (res[i][j] == par[i][j]);
-        }
-    }
-
+    CHECK(a.check_cub());
 }
 
-TEST_CASE("C 6.02: Cuboid:get_vec_par i check_vec_par 2")
-{
-    int i,j;
+TEST_CASE("C 6.02: Cuboid::check_cub 2"){
+    int i;
     Vector3D tops[2][4];
     double iter[4][3] = {{-2, -2, 0}, {0, -2, 0}, {0, 0, 0}, {-2, 0, 0}};
     for (i = 0; i < 4; ++i)
@@ -419,19 +397,75 @@ TEST_CASE("C 6.02: Cuboid:get_vec_par i check_vec_par 2")
         tops[1][i] = Vector3D(iter[i]);
     }
     Cuboid a(tops);
-    double tab[3][3] = {{0,1,0},{0,0,1},{-1,0,0}};
-    Vector3D par[2][3];
-    for (i=0;i<3;++i){
-        par[0][i] = Vector3D(tab[i]);
-        par[1][i] = Vector3D(tab[i]);
-    }
+    CHECK(a.check_cub());
+}
 
-    Vector3D res[2][3];
-    a.get_vec_perp(res);
-    for (i=0;i<2;++i){
-        for (j=0;j<3;++j){
-            CHECK (res[i][j] == par[i][j]);
-        }
+TEST_CASE("C 6.03: Cuboid::check_cub 3"){
+    int i;
+    Vector3D tops[2][4];
+    double iter[4][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+    for (i = 0; i < 4; ++i)
+    {
+        tops[0][i] = Vector3D(iter[i]);
+        iter[i][2] = 2;
+        tops[1][i] = Vector3D(iter[i]);
     }
+    Cuboid a(tops);
+    CHECK(!a.check_cub());
+}
 
+TEST_CASE("C 6.04: Cuboid::check_cub 4"){
+    int i;
+    Vector3D tops[2][4];
+    double iter[4][3] = {{0, 0, 0}, {2, 0, 0}, {2, 2, 0}, {0, 2, 0}};
+    for (i = 0; i < 4; ++i)
+    {
+        tops[0][i] = Vector3D(iter[i]);
+        iter[i][2] = 2;
+        tops[1][i] = Vector3D(iter[i]);
+    }
+    Cuboid a(tops);
+    CHECK(a.check_cub());
+}
+
+TEST_CASE("C 6.05: Cuboid::check_cub 5"){
+    int i;
+    Vector3D tops[2][4];
+    double iter[4][3] = {{214, 3234, 4140}, {4234, 0, 0}, {114, 41243, 0}, {0,0, 0}};
+    for (i = 0; i < 4; ++i)
+    {
+        tops[0][i] = Vector3D(iter[i]);
+        iter[i][2] = 2;
+        tops[1][i] = Vector3D(iter[i]);
+    }
+    Cuboid a(tops);
+    CHECK(!a.check_cub());
+}
+
+TEST_CASE("C 6.06: Cuboid::check_cub 6 small"){
+    int i;
+    Vector3D tops[2][4];
+    double iter[4][3] = {{0, 0, 0}, {0.0000000002, 0, 0}, {0.0000000002, 0.0000000002, 0}, {0, 0.0000000002, 0}};
+    for (i = 0; i < 4; ++i)
+    {
+        tops[0][i] = Vector3D(iter[i]);
+        iter[i][2] = 2;
+        tops[1][i] = Vector3D(iter[i]);
+    }
+    Cuboid a(tops);
+    CHECK(a.check_cub());
+}
+
+TEST_CASE("C 6.07: Cuboid::check_cub 7 small neg"){
+    int i;
+    Vector3D tops[2][4];
+    double iter[4][3] = {{0, 0, 0}, {-0.0000000002, 0, 0}, {-0.0000000002, -0.0000000002, 0}, {0, -0.0000000002, 0}};
+    for (i = 0; i < 4; ++i)
+    {
+        tops[0][i] = Vector3D(iter[i]);
+        iter[i][2] = 2;
+        tops[1][i] = Vector3D(iter[i]);
+    }
+    Cuboid a(tops);
+    CHECK(a.check_cub());
 }

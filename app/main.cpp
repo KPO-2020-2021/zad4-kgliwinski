@@ -36,7 +36,7 @@ int main() {
         menu m;
 
        Cuboid a;
-       std::cout<<a;
+       a.check_vec_perp();
 
 
 }

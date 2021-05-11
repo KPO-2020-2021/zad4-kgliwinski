@@ -82,6 +82,17 @@ void get_vec_opp(Vector3D (&vecs)[3][2]) const;
 bool check_vec_opp() const;
 
 /*!
+ *  \brief Sprawdza czy dlugosci wektory tworzace przeciwne boki prostopadloscianu
+ *          maja poprawne wartosci (nie sa rowne 0)                                          
+ *  Argumenty:
+ *       brak                                                                                                       
+ *  Zwraca:                                                                   
+ *     \retval true - maja poprawne wartosci
+ *     \retval false - nie maja poprawnych wartosci                                  
+ */
+bool check_vec_len() const;
+
+/*!
  *  \brief Zwraca do tablicy 2x3 wektory reprezentujace
  *          boki przy wierzcholkach [0][1] (do vecs[0])
  *          i [1][3] (do vecs[1]) prostopadloscianu                                         

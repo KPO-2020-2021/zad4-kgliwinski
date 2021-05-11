@@ -43,7 +43,7 @@ Cuboid::Cuboid(double (&tovec)[2][4][3])
 
 bool Cuboid::check_cub() const
 {
-    if (!(check_vec_opp() && check_vec_perp()))
+    if (!(check_vec_opp() && check_vec_perp() && check_vec_len()))
         return 0;
     return 1;
 }
@@ -73,20 +73,47 @@ bool Cuboid::check_vec_opp() const
     return 1;
 }
 
+bool Cuboid::check_vec_len() const
+{
+    int i, j;
+    Vector3D opp[3][2];
+    this->get_vec_opp(opp);
+    for (i = 0; i < 3; ++i)
+    {
+        for (j = 0; j < 2; ++j)
+        {
+            if (opp[i][j].get_len() == 0)
+                return 0;
+        }
+    }
+    return 1;
+}
+
 void Cuboid::get_vec_perp(Vector3D (&vecs)[2][3]) const
 {
     vecs[0][0] = tops[0][2] - tops[0][1];
     vecs[0][1] = tops[1][1] - tops[0][1];
     vecs[0][2] = tops[0][0] - tops[0][1];
 
-    vecs[1][0] = tops[1][3] - tops[1][0];
-    vecs[1][1] = tops[1][3] - tops[0][3];
-    vecs[1][2] = tops[1][3] - tops[1][2];
+    vecs[1][0] = tops[1][0] - tops[1][3];
+    vecs[1][1] = tops[0][3] - tops[1][3];
+    vecs[1][2] = tops[1][2] - tops[1][3];
 }
 
 bool Cuboid::check_vec_perp() const
 {
-
+    int i;
+    Vector3D vecs[2][3];
+    this->get_vec_perp(vecs);
+    for (i = 0; i < 2; ++i)
+    {
+        if (!(vecs[i][0].scalar_prod(vecs[i][1]) <= 0.0000000001))
+            return 0;
+        if (!(vecs[i][0].scalar_prod(vecs[i][2]) <= 0.0000000001))
+            return 0;
+        if (!(vecs[i][1].scalar_prod(vecs[i][2]) <= 0.0000000001))
+            return 0;
+    }
     return 1;
 }
 
