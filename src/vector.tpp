@@ -20,7 +20,13 @@ Vector<type,SIZE>::Vector(type tmp[SIZE])
         size[i] = tmp[i];
     }
 }
-
+template <typename type, unsigned int SIZE> 
+void Vector<type,SIZE>::get_vec(type (&tab)[SIZE]) const{
+    unsigned int i;
+    for (i=0;i<SIZE;++i){
+        tab[i] = size[i];
+    }
+}
 
 
  template <typename type, unsigned int SIZE> 

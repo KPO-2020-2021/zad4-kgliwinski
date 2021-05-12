@@ -478,3 +478,58 @@ TEST_CASE("V 11.05: scalar_prod() 5"){
 
     CHECK (abs(res - a.scalar_prod(b))<= 0.000001);
 }
+
+TEST_CASE("V 12.01: get_vec 1"){
+    double tab[3] = {-3,1,-7};
+    Vector3D a(tab);
+    double tab2[3];
+    a.get_vec(tab2);
+    int i;
+    for (i=0;i<3;++i){
+    CHECK (tab[i] == tab2[i]);
+    }
+}
+
+TEST_CASE("V 12.02: get_vec 2"){
+    double tab[3] = {-1231,3214,415413};
+    Vector3D a(tab);
+    double tab2[3];
+    a.get_vec(tab2);
+    int i;
+    for (i=0;i<3;++i){
+    CHECK (tab[i] == tab2[i]);
+    }
+}
+
+TEST_CASE("V 12.03: get_vec 3"){
+    double tab[3] = {-0.00000003,2142141,-0.0092419847};
+    Vector3D a(tab);
+    double tab2[3];
+    a.get_vec(tab2);
+    int i;
+    for (i=0;i<3;++i){
+    CHECK (tab[i] == tab2[i]);
+    }
+}
+
+TEST_CASE("V 12.04: get_vec 4"){
+    double tab[3] = {1244,423525,0.000003};
+    Vector3D a(tab);
+    double tab2[3];
+    a.get_vec(tab2);
+    int i;
+    for (i=0;i<3;++i){
+    CHECK (tab[i] == tab2[i]);
+    }
+}
+
+TEST_CASE("V 12.05: get_vec 5"){
+    double tab[3] = {0,0,0};
+    Vector3D a(tab);
+    double tab2[3];
+    a.get_vec(tab2);
+    int i;
+    for (i=0;i<3;++i){
+    CHECK (tab[i] == tab2[i]);
+    }
+}

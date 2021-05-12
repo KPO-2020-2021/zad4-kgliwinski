@@ -233,3 +233,38 @@ void Cuboid::print_cuboid(std::ostream &out) const
         }
     }
 }
+
+void Cuboid::print_cuboid_weird(std::ostream &out) const
+{
+    Vector3D vec[8];
+    double tab[2][4][3];
+    int i,j,k;
+    tops[0][0].get_vec(tab[0][0]); //W1
+    tops[0][1].get_vec(tab[0][1]); //W2
+    tops[0][3].get_vec(tab[0][2]); //W3
+    tops[0][2].get_vec(tab[0][3]); //W4
+    tops[1][3].get_vec(tab[1][0]); //W5
+    tops[1][2].get_vec(tab[1][1]); //W6
+    tops[1][0].get_vec(tab[1][2]); //W7
+    tops[1][1].get_vec(tab[1][3]);;//W8
+    
+    out.precision(10);
+    for (i=0;i<2;++i){
+        for (j=0;j<4;++j){
+            for (k=0;k<3; ++k){
+                out << std::setw(10) << std::fixed << std::setprecision(10) << tab[i][j][k] << " ";
+            }
+            if(j==1 || j==3)
+                    out<<std::endl;
+            out<<std::endl;
+        }
+    }
+    for (i=0;i<1;++i){
+        for (j=0;j<2;++j){
+            for (k=0;k<3; ++k){
+                out << std::setw(10) << std::fixed << std::setprecision(10) << tab[i][j][k] << " ";
+            }
+            out<<std::endl;
+        }
+    }
+}

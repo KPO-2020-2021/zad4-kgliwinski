@@ -34,7 +34,7 @@ bool Menu_cub::CuboidToFile(const char *filename, Cuboid const &cub)
         return false;
     }
     std::ostringstream out;
-    cub.print_cuboid(filestrm);
+    cub.print_cuboid_weird(filestrm);
 
     filestrm.close();
     return !filestrm.fail();
@@ -48,7 +48,7 @@ void Menu_cub::Print_to_gnuplot(Cuboid const &cub){
        Lacze.DodajNazwePliku("../datasets/cuboid.dat", PzG::RR_Punktowy, 2);
 
        Lacze.ZmienTrybRys(PzG::TR_3D);
-           cub.print_cuboid(std::cout);
+           cub.print_cuboid_weird(std::cout);
        if (!this->CuboidToFile("../datasets/cuboid.dat",cub))
               std::cerr << "ERROR" << std::endl;
        Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku

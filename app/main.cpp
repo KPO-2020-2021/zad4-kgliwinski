@@ -30,8 +30,8 @@ int main()
   int i;
   Menu_cub menu;
 
-  double iter1[4][3] = {{0, 0, 0}, {100, 0, 0}, {0, 100, 0} , {100, 100, 0}};
-  double iter2[4][3] = {{0, 100, 200}, {100, 100, 200}, {0, 0, 200} , {100, 0, 200}};
+  double iter1[4][3] = {{0, 0, 0}, {50, 0, 0}, {50, 50, 0} , {0, 50, 0}};
+  double iter2[4][3] = {{0, 0, 100}, {50, 0, 100}, {50, 50, 100} , {0, 50, 100}};
 
   Vector3D tops[2][4];
   for (i = 0; i < 4; ++i)
@@ -44,9 +44,12 @@ int main()
   menu.Print_to_gnuplot(cub);
 
     Matrix3D a;
-    a = a.rotation_matrix(90,'x');
-    a = a * a.rotation_matrix(90,'y');
+    a = a.rotation_matrix(180,'x');
+    a = a * a.rotation_matrix(180,'y');
     a = a * a.rotation_matrix(90,'z');
+    double tab[3] = {50,0,0};
+    Vector3D b(tab);
+    cub = cub.translation(tab);
 
     cub = cub.rotation(a);
     menu.Print_to_gnuplot(cub);

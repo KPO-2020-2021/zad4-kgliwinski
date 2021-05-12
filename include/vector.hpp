@@ -125,6 +125,15 @@ public:
     type modulus2() const;
 
 /*!
+ * \brief Zwraca wektor do tablicy o rozmiarze SIZE                                           
+ * Argumenty:                                                                
+ *      \param[in] tab - tablica do ktorej wypisywany jest wektor                                                                 
+ * Zwraca:                                                                   
+ *      \post zmienia zawartosc podanej tablicy                                              
+ */
+    void get_vec(type (&tab)[SIZE]) const;
+
+/*!
  * \brief Zwraca dlugosc wektora                                                    
  * Argumenty:                                                                
  *      Brak                                                                 
