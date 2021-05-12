@@ -142,6 +142,20 @@ void Menu_cub::switch_menu(const char &oper, Cuboid &cub)
                   << std::endl;
         break;
     }
+
+    case 'h':
+    {
+        Matrix4D mat;
+        double a,b,g;
+        Vector3D trans;
+        std::cout<<"Podaj katy alpha, beta, gamma > ";
+        std::cin>>a>>b>>g;
+        std::cout<<"Podaj wartosci wektora translacji. Wejscie typu: 'x y z' > ";
+        std::cin>>trans;
+
+        mat.rotate_and_translate(a,b,g,trans);
+        std::cout<<mat<<std::endl;
+    }
     }
 }
 
@@ -191,6 +205,7 @@ void Menu_cub::show_menu()
     std::cout << "  w - wyswietlenie wspolrzednych wierzcholkow\n";
     std::cout << "  s - sprawdzenie dlugosci przeciwleglych bokow\n";
     std::cout << "  m - wyswietl menu\n";
+    std::cout << "  h - MODYFIKACJA: tworzenie i wyswietlanie lacznej macierzy obrotu i translacji\n";
     std::cout << "  k - koniec dzialania programu\n\n";
 }
 

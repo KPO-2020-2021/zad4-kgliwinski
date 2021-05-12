@@ -18,7 +18,7 @@ in the build directory.
 
 For the sake of the project, rectangle tests have been disabled, since rectangle class is not a part of the task.
 
-
+## Aby uruchomic modyfikacje do zadania wpisz 'h' podczas obslugi menu. Odpowiednia modyfikacja menu zostala rowniez wprowadzona
 
 ## Structure
 ``` text

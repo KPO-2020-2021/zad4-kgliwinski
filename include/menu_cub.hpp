@@ -3,6 +3,7 @@
 #include <fstream>
 #include "cuboid.hpp"
 #include "lacze_do_gnuplota.hpp"
+#include "matrix4D.hpp"
 
 /*!
  * \file  menu_cub.hpp

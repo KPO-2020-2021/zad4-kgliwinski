@@ -1,5 +1,6 @@
 #pragma once
 #include "vector.hpp"
+#include "vector3D.hpp"
 #include <iostream>
 #include <cstdlib>
 /*!
@@ -148,6 +149,13 @@ public:
     Matrix rotation_matrix(const type & angle, const char &axis) const; //3D rotation
 
     Vector<type,SIZE> apply_matrix_to_rotation(const Vector<type,SIZE> &rotation) const; //3D rotation
+
+/*!
+ *  \brief ZADANIE DO MODYFIKACJI
+ *          Tworzy macierz 4x4 zdolna do jednoczesnego obrotu i przesuniecia wektora                                                      
+ *          Zdefiniowana w macierz4D.hpp            
+ */
+    void rotate_and_translate(const double & alpha, const double & beta, const double & gamma, const Vector3D &tran) ;
 };
 
 
