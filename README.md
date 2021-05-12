@@ -16,40 +16,18 @@
 ```
 in the build directory.
 
+### On my local machine, results of testing look as follows:
+```
+===============================================================================
+[doctest] test cases: 174 | 174 passed | 0 failed | 0 skipped
+[doctest] assertions: 249 | 249 passed | 0 failed |
+[doctest] Status: SUCCESS!
+```
 For the sake of the project, rectangle tests have been disabled, since rectangle class is not a part of the task.
 
 ## Aby uruchomic modyfikacje do zadania wpisz 'h' podczas obslugi menu. Odpowiednia modyfikacja menu zostala rowniez wprowadzona
 
-## Structure
-``` text
-.
-├── CMakeLists.txt
-├── app
-│   └── main.cpp
-├── include
-│   ├── example.h
-│   └── exampleConfig.h.in
-├── src
-│   └── example.cpp
-└── tests
-    ├── dummy.cpp
-    └── main.cpp
-```
-
-Sources go in [src/](src/), header files in [include/](include/), main programs in [app/](app), and
-tests go in [tests/](tests/) (compiled to `unit_tests` by default). 
-
-If you add a new executable, say `app/hello.cpp`, you only need to add the following two lines to [CMakeLists.txt](CMakeLists.txt): 
-
-``` cmake
-add_executable(main app/main.cpp)   # Name of exec. and location of file.
-target_link_libraries(main PRIVATE ${LIBRARY_NAME})  # Link the executable to lib built from src/*.cpp (if it uses it).
-```
-
-You can find the example source code that builds the `main` executable in [app/main.cpp](app/main.cpp) under the `Build` section in [CMakeLists.txt](CMakeLists.txt). 
-If the executable you made does not use the library in [src/](src), then only the first line is needed.
-
-
+## Documentation has been included, in the html directory on main
 
 ## Building
 
@@ -67,38 +45,3 @@ Example:
 > make doc       # Generate html documentation.
 ```
 
-## .gitignore
-
-The [.gitignore](.gitignore) file is a copy of the [Github C++.gitignore file](https://github.com/github/gitignore/blob/master/C%2B%2B.gitignore),
-with the addition of ignoring the build directory (`build/`).
-
-## Services
-
-If the repository is activated with Travis-CI, then unit tests will be built and executed on each commit.
-The same is true if the repository is activated with Appveyor.
-
-If the repository is activated with Coveralls/Codecov, then deployment to Travis will also calculate code coverage and
-upload this to Coveralls.io and/or Codecov.io
-
-## Setup
-
-### Using the GitHub template
-Click the `Use this template` button to make a new repository from this template.
-
-**NB**: GitHub templates do not carry over submodules, which means you need to add those back _before_ you can build the project. Run the following after you have generated your new project:
-``` bash
-> git clone https://github.com/<your-username>/<your-repo-name>
-> git submodule add https://github.com/onqtam/doctest.git external/doctest
-> git commit -a --amend --no-edit
-> git push --force
-```
-
-### From command line
-When starting a new project, you probably don't want the history of this repository. To start fresh you can use
-the [setup script](setup.sh) as follows:
-``` bash
-> git clone --recurse-submodules https://github.com/bsamseth/cpp-project  # Or use ssh-link if you like.
-> cd cpp-project
-> bash setup.sh
-```
-The result is a fresh Git repository with one commit adding all files from the boiler plate. 
