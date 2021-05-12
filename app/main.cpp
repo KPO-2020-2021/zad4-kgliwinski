@@ -40,17 +40,7 @@ int main()
     tops[1][i] = Vector3D(iter2[i]);
   }
     Cuboid cub(tops);
+  menu.init_menu(tops);
 
-  menu.Print_to_gnuplot(cub);
 
-    Matrix3D a;
-    a = a.rotation_matrix(180,'x');
-    a = a * a.rotation_matrix(180,'y');
-    a = a * a.rotation_matrix(90,'z');
-    double tab[3] = {50,0,0};
-    Vector3D b(tab);
-    cub = cub.translation(tab);
-
-    cub = cub.rotation(a);
-    menu.Print_to_gnuplot(cub);
 }

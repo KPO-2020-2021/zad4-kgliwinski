@@ -96,6 +96,18 @@ bool check_vec_opp() const;
 bool check_vec_len() const;
 
 /*!
+ *  \brief Zapisuje do tablicy tab w kolejnosci:
+ *          1.dluzsze przeciwlegle boki
+ *          2.krotsze przeciwlegle boki
+ *          3.poprzeczne przeciwlegle boki
+ *         Wartosci dlugosci tych bokow                                      
+ *  Argumenty:
+ *       \param[in] tab - tablica x3 do ktorej zapisza sie wartosci                                                                                                       
+ *  Zwraca:                                                                                                  
+ */
+void get_vec_len(double (&tab)[3][2]) const;
+
+/*!
  *  \brief Zwraca do tablicy 2x3 wektory reprezentujace
  *          boki przy wierzcholkach [0][1] (do vecs[0])
  *          i [1][3] (do vecs[1]) prostopadloscianu                                         

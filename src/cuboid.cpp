@@ -89,6 +89,26 @@ bool Cuboid::check_vec_len() const
     return 1;
 }
 
+void Cuboid::get_vec_len(double (&tab)[3][2]) const
+{
+    int i;
+    Vector3D opp[3][2];
+    this->get_vec_opp(opp);
+    for (i = 0; i < 3; ++i)
+    {
+            tab[i][0] = opp[i][0].get_len();
+            tab[i][1] = opp[i][1].get_len();
+    }
+    if (tab[0]<tab[1]){
+        double tmp[2]={tab[0][0],tab[0][1]};
+        tab[0][0]=tab[1][0];
+        tab[0][1]=tab[1][1];
+        tab[1][0]=tmp[1];
+        tab[1][1]=tmp[0];
+    }
+
+}
+
 void Cuboid::get_vec_perp(Vector3D (&vecs)[2][3]) const
 {
     vecs[0][0] = tops[0][2] - tops[0][1];
