@@ -46,7 +46,7 @@ void Menu_cub::print_side_len(Cuboid const &cub) const
     cub.get_vec_len(lens);
 
     if (abs(lens[0][0] == lens[0][1]) <=0.00000000001)
-        std::cout << "\n  Dluzsze przeciwlegle boki sa sobie rowne\n";
+        std::cout << "\nDluzsze przeciwlegle boki sa sobie rowne\n";
     else
         std::cout << "\n !!! Dluzsze przeciwlegle boki nie sa sobie rowne\n";
 
@@ -54,14 +54,14 @@ void Menu_cub::print_side_len(Cuboid const &cub) const
     std::cout << "Dlugosc trzeciego boku: " << lens[0][1] << "\n";
 
     if (abs(lens[1][0] - lens[1][1])<=0.00000000001)
-        std::cout << "\n  Krotsze przeciwlegle boki sa sobie rowne\n";
+        std::cout << "\nKrotsze przeciwlegle boki sa sobie rowne\n";
     else
         std::cout << "\n !!! Krotsze przeciwlegle boki nie sa sobie rowne\n";
 
     std::cout << "Dlugosc pierwszego boku: " << lens[1][0] << "\n";
     std::cout << "Dlugosc trzeciego boku: " << lens[1][1] << "\n";
     if (abs(lens[2][0] - lens[2][1]) <=0.00000000001)
-        std::cout << "\n  Poprzeczne przeciwlegle boki sa sobie rowne\n";
+        std::cout << "\nPoprzeczne przeciwlegle boki sa sobie rowne\n";
     else
         std::cout << "\n !!! Poprzeczne przeciwlegle boki nie sa sobie rowne\n";
     std::cout << "Dlugosc pierwszego boku: " << lens[2][0] << "\n";
@@ -76,7 +76,7 @@ void Menu_cub::switch_menu(const char &oper, Cuboid &cub)
     case 'o':
     {
         std::cout << "   Podaj sekwencje oznaczen oraz katy obrotu w stopniach. Wejscie typu 'axis angle'\n";
-        std::cout << "  !!! Aby zakonczyc wczytywanie wpisz: '^ 1' !!!\n";
+        std::cout << "   !!! Aby zakonczyc wczytywanie wpisz: '. 1' !!!\n";
         switch_rotation();
         std::cout << "Ile razy powtorzyc operacjie? > ";
         std::cin >> times;
@@ -153,7 +153,7 @@ void Menu_cub::switch_rotation()
     char axis;
     std::cin.ignore(1000000, '\n');
     std::cin >> axis >> angle;
-    while (axis != '^')
+    while (axis != '.')
     {
         switch (axis)
         {
