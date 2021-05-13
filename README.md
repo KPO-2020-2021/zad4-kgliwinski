@@ -27,6 +27,8 @@ For the sake of the project, rectangle tests have been disabled, since rectangle
 
 ## Aby uruchomic modyfikacje do zadania wpisz 'h' podczas obslugi menu. Odpowiednia modyfikacja menu zostala rowniez wprowadzona
 
+## Dodatkowa informacja: przy obsludze menu (opcja o) program wymaga wpisania '. 1' zamiast '.'. Jest to opisane takze w samym menu. Przy wpisaniu samego symbolu '.' program sie zbuguje i bedzie dzialal w nieskonczonej petli. Bardzo prosze miec to na uwadze.
+
 ## Documentation has been included, in the html directory on main
 
 ## Building
